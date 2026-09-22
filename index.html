@@ -242,15 +242,45 @@
 
 </head>
 
-<body class="relative flex flex-col items-center min-h-screen selection:bg-brandPrimary selection:text-brandDark">
+<body
+  class="relative flex flex-col items-center min-h-screen selection:bg-brandGreen selection:text-brandDark"
+>
+
+
+  <!-- ==================================================
+       SPLASH SCREEN
+       ==================================================
+
+       شاشة البداية التي تظهر عند فتح الموقع.
+  -->
 
   <div id="splash-screen">
-    <div class="splash-logo">
-      <i class="fa-solid fa-shoe-prints text-5xl text-brandPrimary"></i>
-    </div>
-    <span class="text-brandSky text-xs font-semibold tracking-widest mt-4 uppercase animate-pulse">
-      DRAGO™
+
+
+    <!--
+      صورة اللوجو.
+
+      لو عايز تغير اللوجو:
+      غيّر الرابط الموجود في src.
+    -->
+
+    <img
+      src="splash-logo.png"
+      alt=" "
+      class="splash-logo"
+    />
+
+
+    <!--
+      اسم البراند الذي يظهر تحت اللوجو.
+    -->
+
+    <span
+      class="text-brandGreen text-sm font-semibold tracking-widest mt-4 uppercase animate-pulse"
+    >
+      
     </span>
+
   </div>
 
   <!-- Background Blur Overlay -->
