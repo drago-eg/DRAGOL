@@ -1,1501 +1,452 @@
 <!DOCTYPE html>
 
-<!--
-  بداية صفحة HTML.
-
-  lang="en"
-  معناها أن لغة الصفحة الأساسية إنجليزية.
--->
 <html lang="en">
 
 <head>
 
-  <!--
-    تحديد ترميز الحروف.
-    UTF-8 يسمح باستخدام العربي والإنجليزي والإيموجي وغيرها.
-  -->
   <meta charset="UTF-8" />
-
-
-  <!--
-    مهم جدًا للموبايل.
-
-    يجعل الصفحة تتناسب مع عرض شاشة الهاتف.
-  -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>DRAGO™</title>
 
-  <!--
-    اسم الموقع الذي يظهر في تبويب المتصفح.
-  -->
-  <title>Snöcs</title>
-
-
-  <!-- ==================================================
-       Tailwind CSS
-       ==================================================
-
-       Tailwind مكتبة CSS تساعد في تصميم الصفحة
-       باستخدام Classes جاهزة داخل HTML.
-
-       مثال:
-
-       max-w-md
-       px-6
-       py-12
-       text-center
-  -->
-
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-
-  <!-- ==================================================
-       Font Awesome
-       ==================================================
-
-       مكتبة الأيقونات.
-
-       هي المسؤولة عن:
-
-       WhatsApp
-       Instagram
-       Store
-       وغيرها.
-  -->
-
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
 
-
-  <!-- ==================================================
-       Google Fonts
-       ==================================================
-
-       تحميل خط Inter من Google.
-  -->
-
+  <!-- Google Fonts Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
 
-
-  <!-- ==================================================
-       Tailwind Configuration
-       ==================================================
-
-       هنا بنحدد ألوان البراند والخط.
-  -->
-
   <script>
-
     tailwind.config = {
-
       theme: {
-
         extend: {
-
           colors: {
-
-            /*
-              اللون الأخضر الأساسي.
-            */
-
-            brandGreen: '#72BA27',
-
-
-            /*
-              اللون الأخضر الداكن للخلفية.
-            */
-
-            brandDark: '#1F301F',
-
-
-            /*
-              اللون الأبيض.
-            */
-
-            brandWhite: '#FFFFFF',
-
+            // الهوية البصرية الجديدة - DRAGO Blue Palette
+            brandPrimary: '#31A5ED',   // أزرق DRAGO الأساسي
+            brandSecondary: '#1384D3', // أزرق نيل متوسط
+            brandSky: '#55B7F3',       // أزرق سماوي
+            brandLight: '#B8DEF6',     // أزرق فاتح
+            brandDeep: '#085898',      // أزرق عميق
+            brandSoft: '#85CAF6',      // أزرق خلفيات فاتح
+            brandWhite: '#E7F2F9',     // الأبيض الأساسي
+            brandDark: '#0D3842',      // داكن جدًا للتفاصيل والترويسة
           },
-
-
-          /*
-            تحديد خط Inter كخط أساسي.
-          */
-
           fontFamily: {
-
             sans: ['Inter', 'sans-serif'],
-
           },
-
         },
-
       },
-
     };
-
   </script>
 
-
-  <!-- ==================================================
-       CSS
-       ==================================================
-
-       كل التصميم الخاص بالموقع موجود هنا.
-
-       لا تحتاج ملف CSS خارجي.
-  -->
-
   <style>
-
-
     /* ==================================================
-       BODY
-       ==================================================
-
-       تصميم الصفحة بالكامل.
-    */
-
+       BODY & BACKGROUND
+       ================================================== */
     body {
-
-      /* لون الخلفية الأساسي */
-
-      background-color: #1F301F;
-
-
-      /*
-        صورة الخلفية.
-
-        يمكنك تغيير الرابط الموجود داخل url()
-        إذا أردت صورة أخرى.
-      */
-
-      background-image: url('background.png');
-
-
-      /*
-        جعل الصورة تغطي الشاشة بالكامل.
-      */
-
-      background-size: cover;
-
-
-      /*
-        وضع الصورة في المنتصف.
-      */
-
-      background-position: center;
-
-
-      /*
-        تجعل الخلفية ثابتة أثناء Scroll.
-      */
-
+      background-color: #0D3842;
+      background-image: radial-gradient(circle at 50% 20%, #085898 0%, #0D3842 80%);
       background-attachment: fixed;
-
-
-      /* لون النص الأساسي */
-
-      color: #FFFFFF;
-
-
-      /* نوع الخط */
-
+      color: #E7F2F9;
       font-family: 'Inter', sans-serif;
-
-
-      /* إزالة المسافات الافتراضية */
-
       margin: 0;
-
       padding: 0;
-
-
-      /* أقل ارتفاع للصفحة */
-
       min-height: 100vh;
-
-
-      /* تحسين ظهور الخط */
-
       -webkit-font-smoothing: antialiased;
-
-
-      /* مهم لبعض العناصر */
-
       position: relative;
-
     }
 
-
-    /* ==================================================
-       BACKGROUND BLUR OVERLAY
-       ==================================================
-
-       طبقة فوق الخلفية تعمل تأثير Blur وشفافية.
-    */
-
+    /* Background Blur Overlay */
     .bg-blur-overlay {
-
-      /* تثبيت الطبقة على الشاشة */
-
       position: fixed;
-
-
-      /* تغطية الشاشة بالكامل */
-
       top: 0;
-
       left: 0;
-
       right: 0;
-
       bottom: 0;
-
-
-      /*
-        طبقة Gradient خضراء شفافة.
-      */
-
       background: linear-gradient(
         135deg,
-        rgba(31, 48, 31, 0.85) 0%,
-        rgba(31, 48, 31, 0.6) 100%
+        rgba(13, 56, 66, 0.88) 0%,
+        rgba(8, 88, 152, 0.65) 100%
       );
-
-
-      /*
-        تأثير Blur قوي.
-      */
-
-      backdrop-filter: blur(10px);
-
-      -webkit-backdrop-filter: blur(10px);
-
-
-      /*
-        وضع الطبقة خلف محتوى الموقع.
-      */
-
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       z-index: 0;
-
     }
-
 
     /* ==================================================
        SPLASH SCREEN
-       ==================================================
-
-       الشاشة التي تظهر لحظة فتح الموقع.
-    */
-
-    #splash-screen {
-
-      position: fixed;
-
-      top: 0;
-
-      left: 0;
-
-      width: 100%;
-
-      height: 100%;
-
-
-      /* لون شاشة البداية */
-
-      background-color: #1F301F;
-
-
-      /*
-        وضع اللوجو في منتصف الشاشة.
-      */
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-
-      justify-content: center;
-
-
-      /*
-        تجعل Splash فوق كل شيء.
-      */
-
-      z-index: 9999;
-
-
-      /*
-        Animation الخاصة بالاختفاء.
-      */
-
-      transition:
-        opacity 0.6s ease-out,
-        visibility 0.6s ease-out;
-
-    }
-
-
-    /* ==================================================
-       SPLASH LOGO
        ================================================== */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #0D3842;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+    }
 
     .splash-logo {
-
-      /*
-        حجم اللوجو في شاشة البداية.
-      */
-
-      width: 250px;
-
-      height: auto;
-
-
-      /*
-        تشغيل Animation اسمها splashPulse.
-      */
-
-      animation:
-        splashPulse 1.5s infinite ease-in-out;
-
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(49, 165, 237, 0.15);
+      border: 2px solid #31A5ED;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: splashPulse 1.8s infinite ease-in-out;
     }
-
-
-    /* ==================================================
-       SPLASH ANIMATION
-       ================================================== */
 
     @keyframes splashPulse {
-
-      /*
-        بداية ونهاية الحركة.
-      */
-
-      0%,
-      100% {
-
+      0%, 100% {
         transform: scale(1);
-
-        opacity: 0.8;
-
+        box-shadow: 0 0 15px rgba(49, 165, 237, 0.3);
       }
-
-
-      /*
-        منتصف الحركة.
-
-        اللوجو يكبر قليلًا.
-      */
-
       50% {
-
-        transform: scale(1.12);
-
-        opacity: 1;
-
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(49, 165, 237, 0.7);
       }
-
     }
 
-
     /* ==================================================
-       BUTTON DESIGN
-       ==================================================
-
-       هذا هو شكل جميع أزرار الروابط.
-    */
-
+       BUTTON STYLING
+       ================================================== */
     .pill-button {
-
-      /*
-        خلفية شفافة.
-      */
-
-      background: rgba(255, 255, 255, 0.12);
-
-
-      /*
-        Glass Effect.
-      */
-
-      backdrop-filter: blur(12px);
-
-      -webkit-backdrop-filter: blur(12px);
-
-
-      /*
-        حدود شفافة.
-      */
-
-      border: 1px solid rgba(255, 255, 255, 0.15);
-
-
-      /*
-        يجعل الزر دائريًا من الأطراف.
-      */
-
+      background: rgba(231, 242, 249, 0.07);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(85, 183, 243, 0.25);
       border-radius: 9999px;
-
-
-      /*
-        سرعة الحركة عند Hover.
-      */
-
-      transition:
-        all 0.4s cubic-bezier(
-          0.25,
-          1,
-          0.5,
-          1
-        );
-
-
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
       position: relative;
-
       overflow: hidden;
-
       display: flex;
-
       align-items: center;
-
       cursor: pointer;
-
     }
-
-
-    /* ==================================================
-       HOVER
-       ==================================================
-
-       التأثير عند مرور الماوس على الكمبيوتر.
-    */
 
     @media (hover: hover) {
-
       .pill-button:hover {
-
-        /*
-          الزر يطلع لأعلى قليلًا.
-        */
-
-        transform:
-          translateY(-4px)
-          scale(1.02);
-
-
-        /*
-          زيادة شفافية الخلفية.
-        */
-
-        background:
-          rgba(255, 255, 255, 0.18);
-
-
-        /*
-          تغيير لون الحدود للأخضر.
-        */
-
-        border-color:
-          rgba(114, 186, 39, 0.6);
-
-
-        /*
-          Shadow حول الزر.
-        */
-
-        box-shadow:
-          0 10px 25px -5px
-          rgba(31, 48, 31, 0.5),
-
-          0 0 15px
-          rgba(114, 186, 39, 0.25);
-
+        transform: translateY(-3px) scale(1.015);
+        background: rgba(231, 242, 249, 0.14);
+        border-color: rgba(49, 165, 237, 0.75);
+        box-shadow: 0 10px 25px -5px rgba(13, 56, 66, 0.6),
+                    0 0 18px rgba(49, 165, 237, 0.35);
       }
-
     }
-
-
-    /* ==================================================
-       TOUCH / CLICK
-       ================================================== */
 
     .pill-button:active {
-
-      /*
-        تصغير الزر عند الضغط.
-      */
-
-      transform:
-        scale(0.96)
-        translateY(0);
-
-
-      background:
-        rgba(255, 255, 255, 0.25);
-
-
+      transform: scale(0.97) translateY(0);
+      background: rgba(231, 242, 249, 0.22);
       box-shadow: none;
-
-
-      transition:
-        all 0.1s ease;
-
+      transition: all 0.1s ease;
     }
-
-
-    /* ==================================================
-       BUTTON MAIN TEXT
-       ================================================== */
 
     .btn-text-primary {
-
-      /*
-        لون النص الأساسي.
-      */
-
-      color: #72BA27;
-
-
-      /*
-        سمك الخط.
-      */
-
+      color: #31A5ED;
       font-weight: 600;
-
-
       line-height: 1.2;
-
     }
-
-
-    /* ==================================================
-       BUTTON SECONDARY TEXT
-       ================================================== */
 
     .btn-text-secondary {
-
-      /*
-        لون الوصف الصغير.
-      */
-
-      color:
-        rgba(114, 186, 39, 0.75);
-
-
-      /*
-        حجم الخط.
-      */
-
+      color: rgba(184, 222, 246, 0.8);
       font-size: 0.75rem;
-
-
-      /*
-        مسافة صغيرة أعلى النص.
-      */
-
       margin-top: 2px;
-
     }
-
-
-    /* ==================================================
-       ICON
-       ================================================== */
 
     .btn-icon {
-
-      /*
-        لون الأيقونة.
-      */
-
-      color: #72BA27;
-
-
-      /*
-        حجم الأيقونة.
-      */
-
-      font-size: 1.90rem;
-
-
-      /*
-        وضع الأيقونة في المنتصف.
-      */
-
+      color: #31A5ED;
+      font-size: 1.85rem;
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
-
-      /*
-        حركة الأيقونة.
-      */
-
-      transition:
-        transform 0.3s ease;
-
+      transition: transform 0.3s ease, color 0.3s ease;
     }
-
-
-    /* ==================================================
-       ICON HOVER
-       ================================================== */
 
     .pill-button:hover .btn-icon {
-
-      /*
-        تكبير الأيقونة ولفها قليلًا.
-      */
-
-      transform:
-        scale(1.15)
-        rotate(-5deg);
-
-
-      /*
-        تغيير لون الأيقونة للأبيض.
-      */
-
-      color: #FFFFFF;
-
+      transform: scale(1.15) rotate(-5deg);
+      color: #E7F2F9;
     }
 
-
-    /* ==================================================
-       MASCOT FLOATING ANIMATION
-       ================================================== */
-
+    /* Floating Mascot Animation */
     @keyframes float {
-
-      /*
-        بداية الحركة.
-      */
-
-      0% {
-
-        transform: translateY(0px);
-
-      }
-
-
-      /*
-        منتصف الحركة.
-      */
-
-      50% {
-
-        transform: translateY(-12px);
-
-      }
-
-
-      /*
-        نهاية الحركة.
-      */
-
-      100% {
-
-        transform: translateY(0px);
-
-      }
-
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
-
-
-    /*
-      تطبيق الحركة على صورة الـ Mascot.
-    */
 
     .mascot-img {
-
-      animation:
-        float 6s ease-in-out infinite;
-
+      animation: float 5s ease-in-out infinite;
     }
 
-
-    /* ==================================================
-       TITLE ANIMATION
-       ================================================== */
-
-    @keyframes titlePulse {
-
-      0% {
-
+    /* Title Animation */
+    @keyframes titleGlow {
+      0%, 100% {
         transform: scale(1);
-
-        opacity: 0.9;
-
-        text-shadow:
-          0 0 0px
-          rgba(114, 186, 39, 0);
-
+        text-shadow: 0 0 10px rgba(49, 165, 237, 0.2);
       }
-
-
       50% {
-
-        transform: scale(1.03);
-
-        opacity: 1;
-
-        text-shadow:
-          0 0 15px
-          rgba(114, 186, 39, 0.4);
-
+        transform: scale(1.02);
+        text-shadow: 0 0 25px rgba(49, 165, 237, 0.6);
       }
-
-
-      100% {
-
-        transform: scale(1);
-
-        opacity: 0.9;
-
-        text-shadow:
-          0 0 0px
-          rgba(114, 186, 39, 0);
-
-      }
-
     }
-
-
-    /*
-      تطبيق Animation على اسم Aura.
-    */
 
     .animated-title {
-
       display: inline-block;
-
-      animation:
-        titlePulse 4s ease-in-out infinite;
-
+      animation: titleGlow 4s ease-in-out infinite;
     }
 
-    /* ==================================================
-       FORM ELEMENTS
-       ================================================== */
+    /* Inputs & Select Elements */
     .custom-input {
       width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(114, 186, 39, 0.3);
+      background: rgba(231, 242, 249, 0.06);
+      border: 1px solid rgba(49, 165, 237, 0.3);
       border-radius: 0.75rem;
       padding: 0.75rem 1rem;
-      color: #FFFFFF;
+      color: #E7F2F9;
       font-size: 0.875rem;
       transition: all 0.3s ease;
       outline: none;
     }
+
     .custom-input:focus {
-      border-color: #72BA27;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 10px rgba(114, 186, 39, 0.2);
-    }
-    .custom-input::placeholder {
-      color: rgba(255, 255, 255, 0.4);
-    }
-    select.custom-input option {
-      background: #1F301F;
-      color: #FFF;
+      border-color: #31A5ED;
+      background: rgba(231, 242, 249, 0.12);
+      box-shadow: 0 0 12px rgba(49, 165, 237, 0.3);
     }
 
+    .custom-input::placeholder {
+      color: rgba(231, 242, 249, 0.45);
+    }
+
+    select.custom-input option {
+      background: #0D3842;
+      color: #E7F2F9;
+    }
   </style>
 
 </head>
 
-
-<!-- ==================================================
-     BODY
-     ==================================================
-
-     كل المحتوى الذي يظهر للمستخدم.
--->
-
-<body
-  class="relative flex flex-col items-center min-h-screen selection:bg-brandGreen selection:text-brandDark"
->
-
-
-  <!-- ==================================================
-       SPLASH SCREEN
-       ==================================================
-
-       شاشة البداية التي تظهر عند فتح الموقع.
-  -->
+<body class="relative flex flex-col items-center min-h-screen selection:bg-brandPrimary selection:text-brandDark">
 
   <div id="splash-screen">
-
-
-    <!--
-      صورة اللوجو.
-
-      لو عايز تغير اللوجو:
-      غيّر الرابط الموجود في src.
-    -->
-
-    <img
-      src="splash-logo.png"
-      alt="Snöcs"
-      class="splash-logo"
-    />
-
-
-    <!--
-      اسم البراند الذي يظهر تحت اللوجو.
-    -->
-
-    <span
-      class="text-brandGreen text-sm font-semibold tracking-widest mt-4 uppercase animate-pulse"
-    >
-      
+    <div class="splash-logo">
+      <i class="fa-solid fa-shoe-prints text-5xl text-brandPrimary"></i>
+    </div>
+    <span class="text-brandSky text-xs font-semibold tracking-widest mt-4 uppercase animate-pulse">
+      DRAGO™
     </span>
-
   </div>
 
-
-  <!-- ==================================================
-       BLUR BACKGROUND
-       ================================================== -->
-
+  <!-- Background Blur Overlay -->
   <div class="bg-blur-overlay"></div>
 
-
-  <!-- ==================================================
-       MAIN CONTAINER
-       ==================================================
-
-       يحتوي على كل محتوى الموقع.
-  -->
-
-  <main
-    class="relative z-10 w-full max-w-md mx-auto px-6 py-12 flex flex-col items-center min-h-screen justify-between"
-  >
-
-
-    <!-- ==================================================
-         TOP CONTENT
-         ================================================== -->
+  <main class="relative z-10 w-full max-w-md mx-auto px-6 py-12 flex flex-col items-center min-h-screen justify-between">
 
     <div class="w-full flex flex-col items-center">
 
+      <!-- HEADER -->
+      <div class="text-center w-full mb-6">
 
-      <!-- ==================================================
-           HEADER
-           ================================================== -->
-
-      <div class="text-center w-full mb-8">
-
-
-        <!--
-          Mascot / الصورة الرئيسية.
-        -->
-
+        <!-- Logo Icon Header -->
         <div class="mb-4 flex justify-center">
-
-          <img
-            src="header-logo.png"
-            alt="Snöcs"
-            class="w-45 h-auto mascot-img drop-shadow-2xl opacity-95"
-          />
-
+          <div class="w-28 h-28 rounded-full bg-brandPrimary/15 border-2 border-brandPrimary/40 flex items-center justify-center mascot-img drop-shadow-2xl">
+            <i class="fa-solid fa-shoe-prints text-5xl text-brandPrimary"></i>
+          </div>
         </div>
 
-
-        <!-- ==================================================
-             REVIEWS SLIDESHOW
-             ================================================== -->
-        <div id="reviews-slideshow" class="w-full max-w-sm mx-auto h-20 relative overflow-hidden mb-2 text-center flex items-center justify-center bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm shadow-inner">
-            <div class="text-brandWhite/70 text-xs animate-pulse" data-en="Loading reviews..." data-ar="جاري تحميل الآراء...">Loading reviews...</div>
+        <!-- REVIEWS SLIDESHOW -->
+        <div id="reviews-slideshow" class="w-full max-w-sm mx-auto h-20 relative overflow-hidden mb-4 text-center flex items-center justify-center bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm shadow-inner px-4">
+            <div class="text-brandWhite/80 text-xs animate-pulse" data-en="Loading reviews..." data-ar="جاري تحميل الآراء...">Loading reviews...</div>
         </div>
 
-
-        <!-- ==================================================
-             BRAND NAME
-             ==================================================
-
-             اسم Aura.
-        -->
-
-        <h1
-          class="text-5xl font-extrabold tracking-tight text-brandWhite mb-3 drop-shadow-lg animated-title"
-        >
-          Snöcs
+        <!-- BRAND NAME -->
+        <h1 class="text-5xl font-extrabold tracking-tight text-brandWhite mb-3 drop-shadow-lg animated-title">
+          DRAGO™
         </h1>
 
-
-        <!-- ==================================================
-             DESCRIPTION
-             ================================================== -->
-
+        <!-- DESCRIPTION -->
         <div class="text-center px-2 space-y-1.5 mt-2">
-
-
-          <!-- الجملة الأولى -->
-
-          <p class="text-lg font-medium text-brandWhite drop-shadow-md" data-en="Your feet called. They want Snocs. 👣" data-ar="قدميك تناديك.. تريد Snöcs 👣">
-            Your feet called. They want Snocs. 👣
+          <p class="text-lg font-medium text-brandWhite drop-shadow-md" data-en=" COLD STYLE. BOLD STEPS. 👣" data-ar="👣.خطوات من عالم اخر">
+             COLD STYLE. BOLD STEPS. 👣
           </p>
 
-
-          <!-- الجملة الثانية -->
-
-          <p class="text-[15px] font-medium text-brandWhite/90 drop-shadow-md" data-en="Slides • Toe Slippers • Socks • Shoes" data-ar="سلايدز • شباشب • شراب • أحذية">
+          <p class="text-[15px] font-medium text-brandLight drop-shadow-md" data-en="Slides • Toe Slippers • Socks • Shoes" data-ar="سلايدز • شباشب • شراب • أحذية">
             Slides • Toe Slippers • Socks • Shoes
           </p>
 
-
-          <!-- الجملة الثالثة -->
-
-          <p class="text-[15px] font-medium text-brandWhite/90 drop-shadow-md" data-en="Comfort meets everyday style." data-ar="الراحة تلتقي بالأنشطة اليومية.">
+          <p class="text-[15px] font-medium text-brandLight/90 drop-shadow-md" data-en="Comfort meets everyday style." data-ar="الراحة تلتقي بالأنشطة اليومية.">
             Comfort meets everyday style.
           </p>
-
         </div>
 
       </div>
 
+      <!-- LINKS LIST (Website, WhatsApp, Social Media) -->
+      <div class="w-full space-y-4 mt-2">
 
-<!-- ==================================================
-     LINKS LIST
-     ==================================================
+        <!-- 1. WEBSITE BUTTON -->
+        <a href="https://www.snocs-eg.com/" target="_blank" class="pill-button w-full px-6 py-4 group">
+          <div class="flex-shrink-0 btn-icon w-8">
+            <i class="fa-solid fa-store"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px]" data-en="DRAGO™ Website" data-ar="موقع DRAGO™ الإلكتروني">
+              DRAGO™ Website
+            </div>
+            <div class="btn-text-secondary" data-en="Discover DRAGO™ comfort, style." data-ar="اكتشف راحة وأناقة DRAGO™.">
+              Discover DRAGO™ comfort, style.
+            </div>
+          </div>
+        </a>
 
-     هنا جميع أزرار الروابط.
--->
+        <!-- 2. WHATSAPP BUTTON -->
+        <a href="https://chat.whatsapp.com/Km3p39MlAzGGpsR5yiPIVY" target="_blank" class="pill-button w-full px-6 py-4 group">
+          <div class="flex-shrink-0 btn-icon w-8">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px]" data-en="New Arrivals WhatsApp Group" data-ar="جروب الواتساب للتشكيلات الجديدة">
+              New Arrivals WhatsApp Group
+            </div>
+            <div class="btn-text-secondary" data-en="Get first access to our newest arrivals." data-ar="كن أول من يعلم بأحدث المنتجات والوصلات الجديدة.">
+              Get first access to our newest arrivals.
+            </div>
+          </div>
+        </a>
 
-<div class="w-full space-y-4 mt-2">
+        <!-- 3. INSTAGRAM BUTTON -->
+        <a href="https://www.instagram.com/drago.egy/" target="_blank" class="pill-button w-full px-6 py-4 group">
+          <div class="flex-shrink-0 btn-icon w-8">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px]" data-en="Follow Us on Instagram" data-ar="تابعنا على إنستغرام">
+              Follow Us on Instagram
+            </div>
+            <div class="btn-text-secondary" data-en="Your daily dose of DRAGO™. Follow along." data-ar="جرعتك اليومية من DRAGO™. تابعنا هناك.">
+              Your daily dose of DRAGO™. Follow along.
+            </div>
+          </div>
+        </a>
 
+        <!-- 4. FACEBOOK BUTTON -->
+        <a href="https://www.facebook.com/drago.eg/" target="_blank" class="pill-button w-full px-6 py-4 group">
+          <div class="flex-shrink-0 btn-icon w-8">
+            <i class="fa-brands fa-facebook"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px]" data-en="Follow Us on Facebook" data-ar="تابعنا على فيسبوك">
+              Follow Us on Facebook
+            </div>
+            <div class="btn-text-secondary" data-en="Stay connected with DRAGO™." data-ar="خليك دايماً على تواصل معنا.">
+              Stay connected with DRAGO™.
+            </div>
+          </div>
+        </a>
 
-  <!-- ==================================================
-       1. WEBSITE BUTTON
-       ================================================== -->
+        <!-- 5. TIKTOK BUTTON -->
+        <a href="https://www.tiktok.com/@drago.eg?is_from_webapp=1&sender_device=pc" target="_blank" class="pill-button w-full px-6 py-4 group">
+          <div class="flex-shrink-0 btn-icon w-8">
+            <i class="fa-brands fa-tiktok"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px]" data-en="Follow Us on TikTok" data-ar="تابعنا على تيك توك">
+              Follow Us on TikTok
+            </div>
+            <div class="btn-text-secondary" data-en="Discover DRAGO™, trends & new drops." data-ar="استكشف الفيديوهات والصيحات الجديدة.">
+              Discover DRAGO™, trends & new drops.
+            </div>
+          </div>
+        </a>
 
-  <a
-    href="https://www.snocs-eg.com/"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
+        <!-- LEAVE A REVIEW BUTTON -->
+        <button onclick="openModal('review-modal')" class="pill-button w-full px-6 py-4 group mt-6 bg-brandPrimary/15 border-brandPrimary/50">
+          <div class="flex-shrink-0 btn-icon w-8 text-yellow-400">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px] text-brandWhite drop-shadow-md" data-en="Leave a Review" data-ar="اترك تقييمك">
+              Leave a Review
+            </div>
+            <div class="btn-text-secondary text-brandLight" data-en="Share your DRAGO™ experience." data-ar="شاركنا رأيك وتجربتك مع منتجاتنا.">
+              Share your DRAGO™ experience.
+            </div>
+          </div>
+        </button>
 
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-solid fa-store"></i>
-    </div>
+        <!-- POLICIES & TERMS & LANGUAGE BUTTONS -->
+        <div class="w-full grid grid-cols-3 gap-2 mt-5 px-1">
+          <!-- Terms & Conditions Button -->
+          <button type="button" onclick="openModal('terms-modal')" class="py-2.5 px-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 backdrop-blur-md text-brandPrimary font-semibold text-[12px] sm:text-[13px] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-1 cursor-pointer shadow-sm text-center">
+            <i class="fa-solid fa-file-contract text-xs"></i>
+            <span data-en="Terms" data-ar="الشروط">Terms</span>
+          </button>
 
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
+          <!-- Refund & Return Policy Button -->
+          <button type="button" onclick="openModal('refund-modal')" class="py-2.5 px-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 backdrop-blur-md text-brandPrimary font-semibold text-[12px] sm:text-[13px] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-1 cursor-pointer shadow-sm text-center">
+            <i class="fa-solid fa-rotate-left text-xs"></i>
+            <span data-en="Returns" data-ar="الاسترجاع">Returns</span>
+          </button>
 
-      <div class="btn-text-primary text-[16px]" data-en="Snöcs Website" data-ar="موقع Snöcs الإلكتروني">
-        Snöcs Website
-      </div>
+          <!-- Language Switcher Button -->
+          <button type="button" onclick="toggleLanguage()" class="py-2.5 px-2 rounded-full bg-brandPrimary/20 hover:bg-brandPrimary/30 border border-brandPrimary/50 backdrop-blur-md text-brandWhite font-semibold text-[12px] sm:text-[13px] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-1 cursor-pointer shadow-sm text-center">
+            <i class="fa-solid fa-globe text-xs text-brandPrimary"></i>
+            <span id="lang-btn-text">العربية</span>
+          </button>
+        </div>
 
-      <div class="btn-text-secondary" data-en="Discover Snöcs comfort, style." data-ar="اكتشف راحة وأناقة Snöcs.">
-        Discover Snöcs comfort, style.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       2. WHATSAPP BUTTON
-       ================================================== -->
-
-  <a
-    href="https://chat.whatsapp.com/EJlN6cVNZ0SGUf8KG9JoLt"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-brands fa-whatsapp"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="New Arrivals WhatsApp Group" data-ar="جروب الواتساب للتشكيلات الجديدة">
-        New Arrivals WhatsApp Group
-      </div>
-
-      <div class="btn-text-secondary" data-en="Get first access to our newest arrivals." data-ar="كن أول من يعلم بأحدث المنتجات والوصلات الجديدة.">
-        Get first access to our newest arrivals.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       3. INSTAGRAM BUTTON
-       ================================================== -->
-
-  <a
-    href="https://www.instagram.com/snocsegypt"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-brands fa-instagram"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="Follow Us on Instagram" data-ar="تابعنا على إنستغرام">
-        Follow Us on Instagram
-      </div>
-
-      <div class="btn-text-secondary" data-en="Your daily dose of Snöcs. Follow along." data-ar="جرعتك اليومية من Snöcs. تابعنا هناك.">
-        Your daily dose of Snöcs. Follow along.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       4. FACEBOOK BUTTON
-       ================================================== -->
-
-  <a
-    href="https://www.facebook.com/people/Snocs/100064548531874/?locale=ar_AR"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-brands fa-facebook"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="Follow Us on Facebook" data-ar="تابعنا على فيسبوك">
-        Follow Us on Facebook
-      </div>
-
-      <div class="btn-text-secondary" data-en="Stay connected with Snöcs." data-ar="خليك دايماً على تواصل معنا.">
-        Stay connected with Snöcs.
       </div>
 
     </div>
 
-  </a>
-
-
-  <!-- ==================================================
-       5. TIKTOK BUTTON
-       ================================================== -->
-
-  <a
-    href="https://www.tiktok.com/@snocs.egypt"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-brands fa-tiktok"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="Follow Us on TikTok" data-ar="تابعنا على تيك توك">
-        Follow Us on TikTok
-      </div>
-
-      <div class="btn-text-secondary" data-en="Discover Snöcs, trends & new drops." data-ar="استكشف الفيديوهات والصيحات الجديدة.">
-       Discover Snöcs, trends & new drops.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       13. COMMUNITY BUTTON
-       ================================================== -->
-
-  <a
-    href="tel:+201070184900"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-solid fa-phone"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="📞 Contact Us" data-ar="📞 اتصل بنا">
-        📞 Contact
-      </div>
-
-      <div class="btn-text-secondary" data-en="Contact Snöcs directly." data-ar="تواصل مع Snöcs مباشرة هاتفياً.">
-Contact Snöcs directly.
-      </div>
-
-    </div>
-  </a>
-
-
- 
-
-  <!-- ==================================================
-       6. HELIOPOLIS BUTTON
-       ================================================== -->
-
-  <a
-    href="https://maps.app.goo.gl/1DyL9xr5sHJd5nTDA"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-solid fa-location-dot"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="📍 Snöcs Heliopolis" data-ar="📍 Snöcs مصر الجديدة">
-        📍 Snöcs Heliopolis
-      </div>
-
-      <div class="btn-text-secondary" data-en="44 El Aziz Bellah St., off Gesr El Suez, Hadaeq El Zeitoun." data-ar="٤٤ شارع العزيز بالله - متفرع من جسر السويس - حدائق الزيتون">
-        44 El Aziz Bellah St., off Gesr El Suez, Hadaeq El Zeitoun.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       7. MAADI BUTTON
-       ================================================== -->
-
-  <a
-    href="https://www.google.com/maps/place/77%D8%8C+%D8%B9%D8%B2%D8%A8%D8%A9+%D8%AC%D8%A8%D8%B1%D9%8A%D9%84%D8%8C+%D9%82%D8%B3%D9%85+%D8%A7%D9%84%D8%A8%D8%B3%D8%A7%D8%AA%D9%8A%D9%8BD8%B1%D9%87%D8%A7%E2%80%AC+4230002%E2%80%AD/data=!4m2!3m1!1s0x1458478a8177003f:0x128621e19ea6d074?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESCjExLjE0NS4xMDEYACDXggMqbCw5NDIyMzI5OSw5NDIxNjQxMyw5NDIxMjQ5Niw5NDIwNzM5NCw5NDIwNzUwNiw5NDIwODUwNiw5NDIxNzUyMyw5NDIxODY1Myw5NDIyOTgzOSw0NzA4NzExOCw0NzA4NDM5Myw5NDIxMzIwMEICRUc%3D"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-solid fa-location-dot"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="📍 Snöcs Maadi" data-ar="📍 Snöcs المعادي">
-        📍 Snöcs Maadi
-      </div>
-
-      <div class="btn-text-secondary" data-en="77th Street, next to Maadi & Yacht Club, near El Rayan Hospital." data-ar="شارع ٧٧ - بجوار نادي المعادي واليخت - بالقرب من مستشفى الريان">
-       77th Street, next to Maadi & Yacht Club, near El Rayan Specialized Hospital.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       8. SHISHINY BUTTON
-       ================================================== -->
-
-  <a
-    href="https://maps.app.goo.gl/xEVVsAdxWFVXVEum8"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-solid fa-location-dot"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="📍 Snöcs El Shishiny" data-ar="📍 Snöcs الشيشيني">
-        📍 Snöcs El Shishiny
-      </div>
-
-      <div class="btn-text-secondary" data-en="El Shishiny Street, Mariouteya." data-ar="شارع الشيشيني - المريوطية">
-        El Shishiny Street, Mariouteya.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       9. TERSA BUTTON
-       ================================================== -->
-
-  <a
-    href="https://maps.app.goo.gl/mcbQHpBrX4Q89mwt8"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-solid fa-location-dot"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="📍 Snöcs Tersa" data-ar="📍 Snöcs ترسا">
-        📍 Snöcs Tersa
-      </div>
-
-      <div class="btn-text-secondary" data-en="Tersa Street, next to the camp, Mariouteya – Haram." data-ar="شارع ترسا - بجوار المعسكر - المريوطية - الهرم">
-        Tersa Street, next to the camp, Mariouteya – Haram.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       10. WIMPY BUTTON
-       ================================================== -->
-
-  <a
-    href="https://maps.app.goo.gl/aQLDruvcvmdxr7CK9"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-solid fa-location-dot"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="📍 Snöcs Wimpy" data-ar="📍 Snöcs ويمبي">
-        📍 Snöcs Wimpy
-      </div>
-
-      <div class="btn-text-secondary" data-en="El Shaab Street, in front of the Governorate – Haram." data-ar="شارع الشعب - أمام المحافظة - الهرم">
-        El Shaab Street, in front of the Governorate – Haram.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       11. LEBEINI BUTTON
-       ================================================== -->
-
-  <a
-    href="https://maps.app.goo.gl/G7nX779ViYLJ69RR9"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-solid fa-location-dot"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="📍 Snöcs El Lebeini" data-ar="📍 Snöcs اللبيني">
-        📍 Snöcs El Lebeini
-      </div>
-
-      <div class="btn-text-secondary" data-en="El Lebeini, Haram, behind Siag Hotel." data-ar="اللبيني - الهرم - خلف فندق سياج">
-El Lebeini, Haram, behind Siag Hotel.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       12. ZOMOR BUTTON
-       ================================================== -->
-
-  <a
-    href="https://maps.app.goo.gl/kvPjuk4Ry4SmNLXw9"
-    target="_blank"
-    class="pill-button w-full px-6 py-4 group"
-  >
-
-    <div class="flex-shrink-0 btn-icon w-8">
-      <i class="fa-solid fa-location-dot"></i>
-    </div>
-
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-
-      <div class="btn-text-primary text-[16px]" data-en="📍 Snöcs El Zomor" data-ar="📍 Snöcs الزمر">
-        📍 Snöcs El Zomor
-      </div>
-
-      <div class="btn-text-secondary" data-en="El Zomor Canal St., corner of Nasr El Din, in front of Mosque." data-ar="شارع ترعة الزمر - ناصية نصر الدين - أمام مسجد خاتم المرسلين">
-        El Zomor Canal Street, corner of Nasr El Din, in front of Khatem El Morsaleen Mosque.
-      </div>
-
-    </div>
-
-  </a>
-
-
-  <!-- ==================================================
-       LEAVE A REVIEW BUTTON
-       ================================================== -->
-  <button
-    onclick="openModal('review-modal')"
-    class="pill-button w-full px-6 py-4 group mt-6 bg-brandGreen/10 border-brandGreen/40"
-  >
-    <div class="flex-shrink-0 btn-icon w-8 text-yellow-400">
-      <i class="fa-solid fa-star"></i>
-    </div>
-    <div class="flex-1 flex flex-col justify-center text-center pr-8">
-      <div class="btn-text-primary text-[16px] text-brandWhite drop-shadow-md" data-en="Leave a Review" data-ar="اترك تقييمك">
-        Leave a Review
-      </div>
-      <div class="btn-text-secondary text-brandWhite/80" data-en="Share your Snöcs experience." data-ar="شاركنا رأيك وتجربتك مع منتجاتنا.">
-        Share your Snöcs experience.
-      </div>
-    </div>
-  </button>
-
-
-  <!-- ==================================================
-       POLICIES & TERMS & LANGUAGE BUTTONS
-       ================================================== -->
-
-  <div class="w-full grid grid-cols-3 gap-2 mt-5 px-1">
-
-    <!-- Terms & Conditions Button -->
-    <button
-      type="button"
-      onclick="openModal('terms-modal')"
-      class="py-2.5 px-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 backdrop-blur-md text-brandGreen font-semibold text-[12px] sm:text-[13px] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-1 cursor-pointer shadow-sm text-center"
-    >
-      <i class="fa-solid fa-file-contract text-xs"></i>
-      <span data-en="Terms" data-ar="الشروط">Terms</span>
-    </button>
-
-    <!-- Refund & Return Policy Button -->
-    <button
-      type="button"
-      onclick="openModal('refund-modal')"
-      class="py-2.5 px-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 backdrop-blur-md text-brandGreen font-semibold text-[12px] sm:text-[13px] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-1 cursor-pointer shadow-sm text-center"
-    >
-      <i class="fa-solid fa-rotate-left text-xs"></i>
-      <span data-en="Returns" data-ar="الاسترجاع">Returns</span>
-    </button>
-
-    <!-- Language Switcher Button -->
-    <button
-      type="button"
-      onclick="toggleLanguage()"
-      class="py-2.5 px-2 rounded-full bg-brandGreen/20 hover:bg-brandGreen/30 border border-brandGreen/50 backdrop-blur-md text-brandWhite font-semibold text-[12px] sm:text-[13px] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-1 cursor-pointer shadow-sm text-center"
-    >
-      <i class="fa-solid fa-globe text-xs text-brandGreen"></i>
-      <span id="lang-btn-text">العربية</span>
-    </button>
-
-  </div>
-
-
-    <!-- ==================================================
-         FOOTER
-         ================================================== -->
-
+    <!-- FOOTER -->
     <footer class="mt-12 pb-4 w-full text-center">
-
-
-      <!--
-        اسم المطور.
-      -->
-
-      <span
-      class="text-[11px] font-bold tracking-widest text-brandWhite/70 uppercase"
-    >
-      DEV BY ZEYAD
-    </span>
-
+      <span class="text-[11px] font-bold tracking-widest text-brandLight/70 uppercase">
+        DEV BY ZEYAD
+      </span>
     </footer>
-
 
   </main>
 
+  <!-- TERMS & CONDITIONS MODAL -->
+  <div id="terms-modal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('terms-modal')">
+    <div class="bg-[#0D3842] border border-brandPrimary/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[80vh] flex flex-col transform scale-95 transition-all duration-300">
 
-<!-- ==================================================
-     TERMS & CONDITIONS MODAL
-     ================================================== -->
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+        <h3 class="text-base font-bold text-brandPrimary flex items-center gap-2">
+          <i class="fa-solid fa-file-contract"></i>
+          <span data-en="Terms & Conditions" data-ar="الشروط والأحكام">Terms & Conditions</span>
+        </h3>
+        <button onclick="closeModal('terms-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
 
-<div
-  id="terms-modal"
-  class="fixed inset-0 bg-black/70 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0"
-  onclick="if(event.target === this) closeModal('terms-modal')"
->
-  <div
-    class="bg-[#1F301F] border border-brandGreen/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[80vh] flex flex-col transform scale-95 transition-all duration-300"
-  >
-
-    <!-- Header -->
-    <div
-      class="flex items-center justify-between border-b border-brandWhite/10 pb-3 mb-4"
-    >
-      <h3 class="text-base font-bold text-brandGreen flex items-center gap-2">
-        <i class="fa-solid fa-file-contract"></i>
-
-        <span
-          data-en="Terms & Conditions"
-          data-ar="الشروط والأحكام"
-        >
-          Terms & Conditions
-        </span>
-      </h3>
-
-      <button
-        onclick="closeModal('terms-modal')"
-        class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors"
-        aria-label="Close"
-      >
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-    </div>
-
-    <!-- Scrollable Content -->
-    <div
-      class="overflow-y-auto text-sm text-brandWhite/90 pr-1 leading-relaxed"
-    >
-
-      <!-- ==================================================
-           ENGLISH TERMS
-           ================================================== -->
-
-      <div class="english-policy space-y-5">
-
-        <!-- Introduction -->
-        <section>
-          <h4 class="font-bold text-brandGreen mb-2">
+      <div class="overflow-y-auto text-sm text-brandWhite/90 pr-1 leading-relaxed">
+        <!-- English Terms -->
+        <div class="english-policy space-y-5">
+                    <h4 class="font-bold text-brandGreen mb-2">
             Introduction
           </h4>
 
           <p class="text-xs text-brandWhite/80">
-            Welcome to <strong class="text-brandGreen">Snöcs</strong>,
+            Welcome to <strong class="text-brandGreen">DRAGO™</strong>,
             your store for slippers and footwear products. By accessing our
             website and using our services, you agree to comply with the
             following terms and conditions. Please read these terms carefully
@@ -1511,7 +462,7 @@ El Lebeini, Haram, behind Siag Hotel.
 
           <ul class="list-disc pl-5 space-y-2 text-xs text-brandWhite/80">
             <li>
-              <strong>Store / We / Snöcs:</strong>
+              <strong>Store / We / DRAGO™:</strong>
               Refers to our website and services.
             </li>
 
@@ -1607,7 +558,7 @@ El Lebeini, Haram, behind Siag Hotel.
           <ul class="list-disc pl-5 space-y-2 text-xs text-brandWhite/80">
             <li>
               All copyrights, trademarks, designs, and other intellectual
-              property belong to <strong>Snöcs</strong>.
+              property belong to <strong>DRAGO™</strong>.
             </li>
 
             <li>
@@ -1644,7 +595,7 @@ El Lebeini, Haram, behind Siag Hotel.
           </h4>
 
           <p class="text-xs text-brandWhite/80">
-            <strong>Snöcs</strong> reserves the right to modify these terms
+            <strong>DRAGO™</strong> reserves the right to modify these terms
             and conditions at any time. Any changes become effective
             immediately upon being published on the website.
           </p>
@@ -1652,17 +603,10 @@ El Lebeini, Haram, behind Siag Hotel.
 
       </div>
 
-
-      <!-- ==================================================
-           ARABIC TERMS
-           ================================================== -->
-
-      <div
-        dir="rtl"
-        class="arabic-policy space-y-5 hidden"
-      >
-
-        <!-- المقدمة -->
+        <!-- Arabic Terms -->
+        <div dir="rtl" class="arabic-policy space-y-5 hidden">
+          <section>
+  <!-- المقدمة -->
         <section>
           <h4 class="font-bold text-brandGreen mb-2">
             المقدمة
@@ -1670,7 +614,7 @@ El Lebeini, Haram, behind Siag Hotel.
 
           <p class="text-xs text-brandWhite/80">
             مرحبًا بكم في متجر
-            <strong class="text-brandGreen">Snöcs</strong>
+            <strong class="text-brandGreen">DRAGO™</strong>
             لمنتجات السليبر والأحذية. من خلال الدخول إلى موقعنا واستخدام
             خدماتنا، فإنك توافق على الالتزام بالشروط والأحكام الواردة أدناه.
             يرجى قراءة هذه الشروط بعناية قبل استخدام الموقع أو إتمام أي
@@ -1686,7 +630,7 @@ El Lebeini, Haram, behind Siag Hotel.
 
           <ul class="list-disc pr-5 space-y-2 text-xs text-brandWhite/80">
             <li>
-              <strong>المتجر / نحن / Snöcs:</strong>
+              <strong>المتجر / نحن / DRAGO™:</strong>
               يشير إلى موقعنا الإلكتروني وخدماتنا.
             </li>
 
@@ -1781,7 +725,7 @@ El Lebeini, Haram, behind Siag Hotel.
           <ul class="list-disc pr-5 space-y-2 text-xs text-brandWhite/80">
             <li>
               جميع حقوق النشر والعلامات التجارية والتصاميم وغيرها من حقوق
-              الملكية الفكرية تخص <strong>Snöcs</strong>.
+              الملكية الفكرية تخص <strong>DRAGO™</strong>.
             </li>
 
             <li>
@@ -1817,7 +761,7 @@ El Lebeini, Haram, behind Siag Hotel.
           </h4>
 
           <p class="text-xs text-brandWhite/80">
-            يحق لـ <strong>Snöcs</strong> تعديل هذه الشروط في أي وقت،
+            يحق لـ <strong>DRAGO™</strong> تعديل هذه الشروط في أي وقت،
             وتصبح التعديلات سارية فور نشرها على الموقع.
           </p>
         </section>
@@ -1826,43 +770,23 @@ El Lebeini, Haram, behind Siag Hotel.
 
     </div>
 
-    <!-- Footer -->
-    <div
-      class="mt-5 pt-3 border-t border-brandWhite/10 flex justify-end"
-    >
-      <button
-        onclick="closeModal('terms-modal')"
-        class="px-5 py-2 bg-brandGreen text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer"
-        data-en="Close"
-        data-ar="إغلاق"
-      >
-        Close
-      </button>
+
+      <div class="mt-5 pt-3 border-t border-white/10 flex justify-end">
+        <button onclick="closeModal('terms-modal')" class="px-5 py-2 bg-brandPrimary text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer" data-en="Close" data-ar="إغلاق">
+          Close
+        </button>
+      </div>
+
     </div>
-
   </div>
-</div>
 
+  <!-- REFUND & RETURN POLICY MODAL -->
+  <div id="refund-modal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('refund-modal')">
+    <div class="bg-[#0D3842] border border-brandPrimary/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[80vh] flex flex-col transform scale-95 transition-all duration-300">
 
-<!-- ==================================================
-     REFUND & RETURN POLICY MODAL
-     ================================================== -->
-
-<div
-  id="refund-modal"
-  class="fixed inset-0 bg-black/70 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0"
-  onclick="if(event.target === this) closeModal('refund-modal')"
->
-  <div
-    class="bg-[#1F301F] border border-brandGreen/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[80vh] flex flex-col transform scale-95 transition-all duration-300"
-  >
-
-    <!-- Header -->
-    <div
-      class="flex items-center justify-between border-b border-brandWhite/10 pb-3 mb-4"
-    >
-      <h3 class="text-base font-bold text-brandGreen flex items-center gap-2">
-        <i class="fa-solid fa-rotate-left"></i>
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+        <h3 class="text-base font-bold text-brandPrimary flex items-center gap-2">
+          <i class="fa-solid fa-rotate-left"></i>
 
         <span
           data-en="Return & Refund Policy"
@@ -1903,7 +827,7 @@ El Lebeini, Haram, behind Siag Hotel.
 
           <!-- Intro -->
           <p class="text-xs text-brandWhite/80">
-            نسعى في <strong class="text-brandGreen">Snöcs</strong>
+            نسعى في <strong class="text-brandGreen">DRAGO™</strong>
             إلى تقديم تجربة تسوق مميزة ومنتجات عالية الجودة. ومع ذلك، قد تطرأ
             بعض الظروف التي تستدعي الاستبدال أو الاسترجاع، ولذلك وضعنا السياسة
             التالية لضمان حقوق عملائنا وتقديم أفضل خدمة ممكنة.
@@ -2042,7 +966,7 @@ El Lebeini, Haram, behind Siag Hotel.
 
           <!-- Intro -->
           <p class="text-xs text-brandWhite/80">
-            At <strong class="text-brandGreen">Snöcs</strong>,
+            At <strong class="text-brandGreen">DRAGO™</strong>,
             we strive to provide an exceptional shopping experience and
             high-quality products. However, there may be circumstances where
             a return or exchange is required. To ensure a smooth experience
@@ -2176,170 +1100,85 @@ El Lebeini, Haram, behind Siag Hotel.
       </div>
     </div>
 
-    <!-- Footer -->
-    <div
-      class="mt-5 pt-3 border-t border-brandWhite/10 flex justify-end"
-    >
-      <button
-        onclick="closeModal('refund-modal')"
-        class="px-5 py-2 bg-brandGreen text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer"
-        data-en="Close"
-        data-ar="إغلاق"
-      >
-        Close
-      </button>
-    </div>
+  <!-- REVIEW MODAL -->
+  <div id="review-modal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('review-modal')">
+    <div class="bg-[#0D3842] border border-brandPrimary/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[90vh] flex flex-col transform scale-95 transition-all duration-300">
 
-  </div>
-</div>
-
-<!-- ==================================================
-     REVIEW MODAL
-     ================================================== -->
-<div
-  id="review-modal"
-  class="fixed inset-0 bg-black/70 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0"
-  onclick="if(event.target === this) closeModal('review-modal')"
->
-  <div class="bg-[#1F301F] border border-brandGreen/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[90vh] flex flex-col transform scale-95 transition-all duration-300">
-    
-    <!-- Header -->
-    <div class="flex items-center justify-between border-b border-brandWhite/10 pb-3 mb-4">
-      <h3 class="text-base font-bold text-brandGreen flex items-center gap-2">
-        <i class="fa-solid fa-comment-dots"></i>
-        <span data-en="Leave a Review" data-ar="اترك تقييمك">Leave a Review</span>
-      </h3>
-      <button onclick="closeModal('review-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-    </div>
-
-    <!-- Form Content -->
-    <div class="overflow-y-auto pr-1 space-y-4">
-      
-      <!-- Name -->
-      <div>
-        <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Your Name" data-ar="الاسم">Your Name</label>
-        <input type="text" id="rev-name" class="custom-input" placeholder="e.g. Ahmed Ali" />
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+        <h3 class="text-base font-bold text-brandPrimary flex items-center gap-2">
+          <i class="fa-solid fa-comment-dots"></i>
+          <span data-en="Leave a Review" data-ar="اترك تقييمك">Leave a Review</span>
+        </h3>
+        <button onclick="closeModal('review-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
       </div>
 
-      <!-- Phone (Required) -->
-      <div>
-        <label class="block text-xs text-brandWhite/80 mb-1 ml-1">
-          <span data-en="Phone Number" data-ar="رقم الهاتف">Phone Number</span>
-          <span class="text-red-400">*</span>
-        </label>
-        <input type="tel" id="rev-phone" class="custom-input border-red-400/30 focus:border-red-400" placeholder="01xxxxxxxxx" required />
-        <p id="phone-error" class="text-red-400 text-[10px] mt-1 hidden" data-en="Phone number is required to submit a review." data-ar="رقم الهاتف مطلوب لإرسال التقييم.">Phone number is required to submit a review.</p>
-      </div>
+      <div class="overflow-y-auto pr-1 space-y-4">
+        <div>
+          <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Your Name" data-ar="الاسم">Your Name</label>
+          <input type="text" id="rev-name" class="custom-input" placeholder="e.g. Ahmed Ali" />
+        </div>
 
-      <!-- Branch -->
-      <div>
-        <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Branch / Location" data-ar="الفرع">Branch / Location</label>
-        <select id="rev-branch" class="custom-input">
-          <option value="Heliopolis" data-en="Heliopolis" data-ar="مصر الجديدة">Heliopolis</option>
-          <option value="Maadi" data-en="Maadi" data-ar="المعادي">Maadi</option>
-          <option value="El Shishiny" data-en="El Shishiny" data-ar="الشيشيني">El Shishiny</option>
-          <option value="Tersa" data-en="Tersa" data-ar="ترسا">Tersa</option>
-          <option value="Wimpy" data-en="Wimpy" data-ar="ويمبي">Wimpy</option>
-          <option value="El Lebeini" data-en="El Lebeini" data-ar="اللبيني">El Lebeini</option>
-          <option value="El Zomor" data-en="El Zomor" data-ar="الزمر">El Zomor</option>
-          <option value="Online / Delivery" data-en="Online / Delivery" data-ar="أونلاين / توصيل">Online / Delivery</option>
-        </select>
-      </div>
+        <div>
+          <label class="block text-xs text-brandWhite/80 mb-1 ml-1">
+            <span data-en="Phone Number" data-ar="رقم الهاتف">Phone Number</span>
+            <span class="text-red-400">*</span>
+          </label>
+          <input type="tel" id="rev-phone" class="custom-input border-red-400/30 focus:border-red-400" placeholder="01xxxxxxxxx" required />
+          <p id="phone-error" class="text-red-400 text-[10px] mt-1 hidden" data-en="Phone number is required to submit a review." data-ar="رقم الهاتف مطلوب لإرسال التقييم.">Phone number is required to submit a review.</p>
+        </div>
 
-      <!-- Rating Stars (New) -->
-      <div>
-        <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Rating" data-ar="التقييم">Rating</label>
-        <div class="flex gap-3 text-2xl text-yellow-400 justify-center my-3 drop-shadow-md">
-          <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(1)"></i>
-          <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(2)"></i>
-          <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(3)"></i>
-          <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(4)"></i>
-          <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(5)"></i>
+        <div>
+          <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Order Type / Channel" data-ar="نوع الطلب / المصدر">Order Type / Channel</label>
+          <select id="rev-branch" class="custom-input">
+            <option value="Online / Website" data-en="Online / Website" data-ar="أونلاين / الموقع">Online / Website</option>
+            <option value="WhatsApp" data-en="WhatsApp Order" data-ar="طلب واتساب">WhatsApp Order</option>
+            <option value="Store Visit" data-en="Store Visit" data-ar="زيارة الفرع">Store Visit</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Rating" data-ar="التقييم">Rating</label>
+          <div class="flex gap-3 text-2xl text-yellow-400 justify-center my-3 drop-shadow-md">
+            <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(1)"></i>
+            <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(2)"></i>
+            <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(3)"></i>
+            <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(4)"></i>
+            <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(5)"></i>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Your Review" data-ar="رأيك">Your Review</label>
+          <textarea id="rev-text" class="custom-input h-24 resize-none" placeholder="..." required></textarea>
         </div>
       </div>
 
-      <!-- Review Text -->
-      <div>
-        <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Your Review" data-ar="رأيك">Your Review</label>
-        <textarea id="rev-text" class="custom-input h-24 resize-none" placeholder="..." required></textarea>
+      <div id="rev-success" class="hidden mt-4 p-3 bg-brandPrimary/20 border border-brandPrimary/40 rounded-lg text-center">
+        <p class="text-brandPrimary text-sm font-bold" data-en="Thank you! Your review has been submitted." data-ar="شكراً لك! تم إرسال تقييمك بنجاح.">Thank you! Your review has been submitted.</p>
       </div>
 
-
+      <div class="mt-5 pt-3 border-t border-white/10 flex justify-end gap-2">
+        <button onclick="closeModal('review-modal')" class="px-4 py-2 bg-white/10 text-brandWhite text-xs rounded-full hover:bg-white/20 transition-all cursor-pointer" data-en="Cancel" data-ar="إلغاء">Cancel</button>
+        <button id="rev-submit-btn" onclick="submitReview()" class="px-6 py-2 bg-brandPrimary text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer flex items-center gap-2">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span data-en="Submit" data-ar="إرسال">Submit</span>
+        </button>
+      </div>
 
     </div>
-
-    <!-- Success Message -->
-    <div id="rev-success" class="hidden mt-4 p-3 bg-brandGreen/20 border border-brandGreen/40 rounded-lg text-center">
-      <p class="text-brandGreen text-sm font-bold" data-en="Thank you! Your review has been submitted." data-ar="شكراً لك! تم إرسال تقييمك بنجاح.">Thank you! Your review has been submitted.</p>
-    </div>
-
-    <!-- Footer -->
-    <div class="mt-5 pt-3 border-t border-brandWhite/10 flex justify-end gap-2">
-      <button onclick="closeModal('review-modal')" class="px-4 py-2 bg-white/10 text-brandWhite text-xs rounded-full hover:bg-white/20 transition-all cursor-pointer" data-en="Cancel" data-ar="إلغاء">Cancel</button>
-      <button id="rev-submit-btn" onclick="submitReview()" class="px-6 py-2 bg-brandGreen text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer flex items-center gap-2">
-        <i class="fa-solid fa-paper-plane"></i>
-        <span data-en="Submit" data-ar="إرسال">Submit</span>
-      </button>
-    </div>
-
   </div>
-</div>
-
-  <!-- ==================================================
-       JAVASCRIPT
-       ==================================================
-
-       مسؤول عن إخفاء شاشة البداية وفتح النوافذ التفاعلية وتبديل اللغة.
-  -->
 
   <script>
-
-
-    /*
-      انتظار انتهاء تحميل الصفحة بالكامل.
-    */
-
     window.addEventListener('load', function() {
-
-
-      /*
-        العثور على Splash Screen.
-      */
-
-      const splash =
-        document.getElementById('splash-screen');
-
-
-      /*
-        انتظار 400ms ثم إخفاء الشاشة.
-      */
-
+      const splash = document.getElementById('splash-screen');
       setTimeout(() => {
-
-
-        /*
-          جعل الشفافية صفر.
-        */
-
         splash.style.opacity = '0';
-
-
-        /*
-          إخفاء العنصر.
-        */
-
         splash.style.visibility = 'hidden';
-
-
       }, 400);
-
     });
 
-    /*
-      دوال فتح وإغلاق النوافذ المنبثقة
-    */
     function openModal(id) {
       const modal = document.getElementById(id);
       if (!modal) return;
@@ -2370,23 +1209,17 @@ El Lebeini, Haram, behind Siag Hotel.
       }, 300);
     }
 
-    /*
-      دالة تبديل اللغة بين العربية والإنجليزية
-    */
     let currentLang = 'en';
-
-    // متغير ودالة التقييم بالنجوم
     window.currentRating = 5;
+
     window.setRating = function(val) {
       window.currentRating = val;
       const stars = document.querySelectorAll('.star-btn');
       stars.forEach((star, index) => {
         if (index < val) {
-          // نجمة ممتلئة
           star.classList.remove('fa-regular');
           star.classList.add('fa-solid');
         } else {
-          // نجمة فارغة
           star.classList.remove('fa-solid');
           star.classList.add('fa-regular');
         }
@@ -2396,68 +1229,35 @@ El Lebeini, Haram, behind Siag Hotel.
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'ar' : 'en';
 
-      // تحديث النصوص ذات الخاصيتين data-en و data-ar
       document.querySelectorAll('[data-en][data-ar]').forEach(el => {
         el.textContent = el.getAttribute(`data-${currentLang}`);
       });
 
-      // تحديث نص زر اللغة
       const langBtnText = document.getElementById('lang-btn-text');
       if (langBtnText) {
         langBtnText.textContent = currentLang === 'en' ? 'العربية' : 'English';
       }
 
-      // إظهار/إخفاء سياسات الشروط والاسترجاع باللغة المناسبة
       document.querySelectorAll('.arabic-policy').forEach(el => {
-        if (currentLang === 'ar') {
-          el.classList.remove('hidden');
-        } else {
-          el.classList.add('hidden');
-        }
+        el.classList.toggle('hidden', currentLang !== 'ar');
       });
 
       document.querySelectorAll('.english-policy').forEach(el => {
-        if (currentLang === 'en') {
-          el.classList.remove('hidden');
-        } else {
-          el.classList.add('hidden');
-        }
+        el.classList.toggle('hidden', currentLang !== 'en');
       });
     }
-
   </script>
 
-  <!-- ==================================================
-       FIREBASE & REVIEWS LOGIC
-       ================================================== -->
   <script type="module">
-    /* ==================================================
-       GOOGLE SHEETS REVIEWS CONNECTION
-       ==================================================
-
-       الموقع يرسل التقييمات إلى Google Apps Script.
-       Google Apps Script يحفظها داخل Google Sheet.
-
-       مهم:
-       - التقييم الجديد يدخل بحالة Pending.
-       - من Google Sheet غيّر Status إلى Approved.
-       - الموقع يعرض Approved فقط.
-    */
-
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxB_lvZC8vl1WyK5T4eK9UCG2dT53hK0fKEZc2525spAOlu0xTofsOj5dljzeesHIma3Q/exec";
-
     let slideInterval = null;
 
-    // بيانات تجريبية تظهر فقط إذا تعذر تحميل الآراء من Google Sheet
     const mockReviews = [
-      { name: "Ahmed", text: "Great quality and very comfortable!", branch: "Heliopolis", rating: 5 },
-      { name: "Sara", text: "Best slides I have ever worn.", branch: "Maadi", rating: 5 },
-      { name: "Omar", text: "التوصيل كان سريع والمنتج ممتاز", branch: "Online / Delivery", rating: 5 }
+      { name: "Ahmed", text: "Great quality and very comfortable!", branch: "Online / Website", rating: 5 },
+      { name: "Sara", text: "Best slides I have ever worn.", branch: "WhatsApp", rating: 5 },
+      { name: "Omar", text: "التوصيل كان سريع والمنتج ممتاز جداً", branch: "Online / Website", rating: 5 }
     ];
 
-    /* ==================================================
-       عرض الآراء في الـ Slideshow
-       ================================================== */
     window.renderSlideshow = function(reviews) {
       const container = document.getElementById('reviews-slideshow');
       if (!container) return;
@@ -2473,19 +1273,10 @@ El Lebeini, Haram, behind Siag Hotel.
         const slide = document.createElement('div');
         slide.className = `absolute inset-0 w-full h-full flex flex-col items-center justify-center transition-opacity duration-1000 ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`;
 
-        // تجهيز نص الفرع للترجمة
-        const branchTranslation = `data-en="${rev.branch || ''}" data-ar="${getArabicBranch(rev.branch || '')}"`;
-
-        // إنشاء النجوم حسب التقييم
         const rating = Math.max(1, Math.min(5, Number(rev.rating) || 5));
         let starsHtml = '';
-
         for (let i = 1; i <= 5; i++) {
-          if (i <= rating) {
-            starsHtml += '<i class="fa-solid fa-star"></i>';
-          } else {
-            starsHtml += '<i class="fa-regular fa-star"></i>';
-          }
+          starsHtml += i <= rating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
         }
 
         slide.innerHTML = `
@@ -2493,38 +1284,27 @@ El Lebeini, Haram, behind Siag Hotel.
               ${starsHtml}
           </div>
           <p class="text-brandWhite text-xs sm:text-sm font-medium line-clamp-2 px-4 italic">"${escapeHtml(rev.text || '')}"</p>
-          <span class="text-brandGreen text-[9px] sm:text-[10px] mt-1 font-bold">- ${escapeHtml(rev.name || 'Guest')} (<span ${branchTranslation}>${escapeHtml(rev.branch || '')}</span>)</span>
+          <span class="text-brandPrimary text-[9px] sm:text-[10px] mt-1 font-bold">- ${escapeHtml(rev.name || 'Guest')}</span>
         `;
 
         container.appendChild(slide);
       });
 
-      // تحديث اللغة للبيانات المضافة ديناميكياً
-      if (typeof currentLang !== 'undefined') {
-        container.querySelectorAll('[data-en][data-ar]').forEach(el => {
-          el.textContent = el.getAttribute(`data-${currentLang}`);
-        });
-      }
-
       clearInterval(slideInterval);
       let currentIdx = 0;
       const slides = container.children;
 
-      // تشغيل السلايد شو لو هناك أكثر من تقييم
       if (slides.length > 1) {
         slideInterval = setInterval(() => {
           slides[currentIdx].classList.remove('opacity-100', 'z-10');
           slides[currentIdx].classList.add('opacity-0', 'z-0');
-
           currentIdx = (currentIdx + 1) % slides.length;
-
           slides[currentIdx].classList.remove('opacity-0', 'z-0');
           slides[currentIdx].classList.add('opacity-100', 'z-10');
         }, 4000);
       }
     };
 
-    // حماية بسيطة للنص قبل وضعه داخل HTML
     function escapeHtml(value) {
       return String(value)
         .replace(/&/g, '&amp;')
@@ -2534,56 +1314,26 @@ El Lebeini, Haram, behind Siag Hotel.
         .replace(/'/g, '&#039;');
     }
 
-    // ترجمة أسماء الفروع
-    function getArabicBranch(engBranch) {
-      const map = {
-        "Heliopolis": "مصر الجديدة",
-        "Maadi": "المعادي",
-        "El Shishiny": "الشيشيني",
-        "Tersa": "ترسا",
-        "Wimpy": "ويمبي",
-        "El Lebeini": "اللبيني",
-        "El Zomor": "الزمر",
-        "Online / Delivery": "أونلاين / توصيل"
-      };
-
-      return map[engBranch] || engBranch;
-    }
-
-    /* ==================================================
-       جلب الآراء من Google Sheet
-       ================================================== */
-    async function initFirebase() {
+    async function initReviews() {
       try {
         const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getReviews`, {
           method: 'GET',
           cache: 'no-store'
         });
-
-        if (!response.ok) {
-          throw new Error(`Google Sheets request failed: ${response.status}`);
-        }
-
+        if (!response.ok) throw new Error(`Status: ${response.status}`);
         const result = await response.json();
-
-        if (!result.success || !Array.isArray(result.reviews)) {
-          throw new Error('Invalid response from Google Apps Script');
+        if (result.success && Array.isArray(result.reviews)) {
+          renderSlideshow(result.reviews);
+        } else {
+          renderSlideshow(mockReviews);
         }
-
-        // الموقع يعرض Approved فقط لأن Apps Script يرجع Approved فقط
-        renderSlideshow(result.reviews);
       } catch (error) {
-        console.error('Error fetching reviews from Google Sheets:', error);
         renderSlideshow(mockReviews);
       }
     }
 
-    // تشغيل تحميل الآراء عند فتح الموقع
-    initFirebase();
+    initReviews();
 
-    /* ==================================================
-       إرسال التقييم إلى Google Sheet
-       ================================================== */
     window.submitReview = async () => {
       const nameInput = document.getElementById('rev-name');
       const phoneInput = document.getElementById('rev-phone');
@@ -2618,7 +1368,6 @@ El Lebeini, Haram, behind Siag Hotel.
       submitBtn.style.opacity = '0.5';
 
       try {
-        // إرسال البيانات كنموذج عادي إلى Google Apps Script
         const body = new URLSearchParams();
         body.append('action', 'addReview');
         body.append('name', name);
@@ -2633,15 +1382,9 @@ El Lebeini, Haram, behind Siag Hotel.
           redirect: 'follow'
         });
 
-        if (!response.ok) {
-          throw new Error('Google Apps Script HTTP ' + response.status);
-        }
-
+        if (!response.ok) throw new Error('HTTP ' + response.status);
         const result = await response.json();
-
-        if (!result.success) {
-          throw new Error(result.message || 'Review was not saved');
-        }
+        if (!result.success) throw new Error(result.message || 'Error');
 
         successMsg.classList.remove('hidden');
         nameInput.value = '';
@@ -2657,14 +1400,11 @@ El Lebeini, Haram, behind Siag Hotel.
         }, 2000);
 
       } catch (error) {
-        console.error('Error submitting review:', error);
-
         submitBtn.disabled = false;
         submitBtn.style.opacity = '1';
-
         alert(currentLang === 'ar'
-          ? 'حصل خطأ أثناء إرسال التقييم. تأكد من نشر Google Apps Script كـ Web App ثم حاول مرة أخرى.'
-          : 'Something went wrong while sending your review. Please check the Google Apps Script Web App deployment and try again.'
+          ? 'حصل خطأ أثناء إرسال التقييم. حاول مرة أخرى.'
+          : 'Something went wrong while sending your review. Please try again.'
         );
       }
     };
@@ -2673,4 +1413,3 @@ El Lebeini, Haram, behind Siag Hotel.
 </body>
 
 </html>
-
