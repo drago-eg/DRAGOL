@@ -26,7 +26,6 @@
     rel="stylesheet"
   />
 
-
     <!-- =========================================================
          DRAGO — EASY EDIT CONFIG
          عدّل الروابط والنصوص الأساسية من هنا فقط عند الحاجة.
@@ -50,11 +49,7 @@
           splashLogo: "splash-logo.png",
           headerLogo: "header-logo.png"
         },
-
-        reviews: {
-          googleScriptUrl: "https://script.google.com/macros/s/AKfycbw0rPln8LtwkUoO0vv6Cr0Y9jjbRk-xgOB90XVqmvFcvrVZZ6Q1yRWqyaGKVvAkKVwSPw/exec"
-        }
-      };
+};
     </script>
 
   <script>
@@ -269,164 +264,6 @@
       background: #0D3842;
       color: #E7F2F9;
     }
-
-    /* ==================================================
-       MOBILE / SMALL-SCREEN OPTIMIZATION
-       ================================================== */
-    .social-buttons {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .social-buttons .pill-button {
-      margin: 0 !important;
-      min-height: 68px;
-      width: 100%;
-    }
-
-    .review-button {
-      margin-top: 14px !important;
-      min-height: 68px;
-    }
-
-    /* Prevent long labels from breaking the layout on narrow phones. */
-    .btn-text-primary,
-    .btn-text-secondary {
-      overflow-wrap: anywhere;
-      word-break: normal;
-    }
-
-    @media (max-width: 420px) {
-      .main, main {
-        padding-left: 14px !important;
-        padding-right: 14px !important;
-      }
-
-      .social-buttons {
-        gap: 10px;
-      }
-
-      .social-buttons .pill-button,
-      .review-button {
-        min-height: 64px;
-        padding: 11px 14px !important;
-        border-radius: 22px;
-      }
-
-      .btn-icon {
-        width: 30px !important;
-        min-width: 30px;
-        font-size: 1.55rem;
-      }
-
-      .btn-text-primary {
-        font-size: 14px !important;
-      }
-
-      .btn-text-secondary {
-        font-size: 11px;
-        line-height: 1.25;
-      }
-
-      .pill-button .pr-8 {
-        padding-right: 6px !important;
-      }
-
-      #review-modal,
-      #terms-modal,
-      #refund-modal {
-        padding: 10px !important;
-      }
-
-      #review-modal > div,
-      #terms-modal > div,
-      #refund-modal > div {
-        width: 100%;
-        max-width: 100%;
-        max-height: 92vh;
-        padding: 18px !important;
-        border-radius: 18px;
-      }
-
-      #review-modal .custom-input {
-        min-height: 46px;
-      }
-
-      #review-modal textarea.custom-input {
-        min-height: 92px;
-      }
-
-      #review-modal .flex.justify-end {
-        gap: 8px;
-      }
-
-      #review-modal .flex.justify-end button {
-        min-height: 44px;
-      }
-
-      .grid.grid-cols-3 {
-        gap: 6px !important;
-      }
-
-      .grid.grid-cols-3 button {
-        min-height: 42px;
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-      }
-    }
-
-    @media (max-width: 360px) {
-      main {
-        padding-top: 26px !important;
-        padding-bottom: 26px !important;
-      }
-
-      .social-buttons .pill-button,
-      .review-button {
-        min-height: 60px;
-        padding-top: 9px !important;
-        padding-bottom: 9px !important;
-      }
-
-      .btn-text-primary {
-        font-size: 13px !important;
-      }
-
-      .btn-text-secondary {
-        font-size: 10px;
-      }
-    }
-
-    /* Backdrop blur is expensive on some mobile GPUs. Keep the look, reduce cost. */
-    @media (max-width: 640px) {
-      .bg-blur-overlay {
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-      }
-
-      .pill-button,
-      #reviews-slideshow,
-      #review-modal > div,
-      #terms-modal > div,
-      #refund-modal > div {
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .mascot-img,
-      .animated-title,
-      .splash-logo {
-        animation: none !important;
-      }
-
-      .pill-button {
-        transition: background-color 0.15s ease, border-color 0.15s ease;
-      }
-    }
   </style>
 
 </head>
@@ -434,7 +271,6 @@
 <body
   class="relative flex flex-col items-center min-h-screen selection:bg-brandPrimary selection:text-brandDark"
 >
-
 
   <!-- ==================================================
        SPLASH SCREEN
@@ -445,7 +281,6 @@
 
   <div id="splash-screen">
 
-
     <!--
       صورة اللوجو.
 
@@ -454,11 +289,10 @@
     -->
 
     <img
-      src="splash-logo.png"
+      src="${DRAGO_CONFIG.assets.splashLogo}"
       alt=" "
       class="splash-logo"
     />
-
 
     <!--
       اسم البراند الذي يظهر تحت اللوجو.
@@ -481,7 +315,6 @@
 
       <div class="text-center w-full mb-8">
 
-
         <!--
           Mascot / الصورة الرئيسية.
         -->
@@ -489,18 +322,11 @@
         <div class="mb-4 flex justify-center">
 
           <img
-            src="header-logo.png"
+            src="${DRAGO_CONFIG.assets.headerLogo}"
             alt=""
             class="w-[180px] sm:w-[200px] h-auto mascot-img drop-shadow-2xl opacity-95"
           />
 
-        </div>
-
-
-
-        <!-- REVIEWS SLIDESHOW -->
-        <div id="reviews-slideshow" class="w-full max-w-sm mx-auto h-20 relative overflow-hidden mb-4 text-center flex items-center justify-center bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm shadow-inner px-4">
-            <div class="text-brandWhite/80 text-xs animate-pulse" data-en="Loading reviews..." data-ar="جاري تحميل الآراء...">Loading reviews...</div>
         </div>
 
         <!-- BRAND NAME -->
@@ -527,7 +353,7 @@
 
 <div class="social-buttons">
         <!-- 2. WHATSAPP BUTTON -->
-        <a data-link="whatsapp" target="_blank" rel="noopener noreferrer" class="pill-button w-full px-6 py-4 group">
+        <a data-link="whatsapp" target="_blank" class="pill-button w-full px-6 py-4 group">
           <div class="flex-shrink-0 btn-icon w-8">
             <i class="fa-brands fa-whatsapp"></i>
           </div>
@@ -542,7 +368,7 @@
         </a>
 
         <!-- 3. INSTAGRAM BUTTON -->
-        <a data-link="instagram" target="_blank" rel="noopener noreferrer" class="pill-button w-full px-6 py-4 group">
+        <a data-link="instagram" target="_blank" class="pill-button w-full px-6 py-4 group">
           <div class="flex-shrink-0 btn-icon w-8">
             <i class="fa-brands fa-instagram"></i>
           </div>
@@ -557,7 +383,7 @@
         </a>
 
         <!-- 4. FACEBOOK BUTTON -->
-        <a data-link="facebook" target="_blank" rel="noopener noreferrer" class="pill-button w-full px-6 py-4 group">
+        <a data-link="facebook" target="_blank" class="pill-button w-full px-6 py-4 group">
           <div class="flex-shrink-0 btn-icon w-8">
             <i class="fa-brands fa-facebook"></i>
           </div>
@@ -572,7 +398,7 @@
         </a>
 
         <!-- 5. TIKTOK BUTTON -->
-        <a data-link="tiktok" target="_blank" rel="noopener noreferrer" class="pill-button w-full px-6 py-4 group">
+        <a data-link="tiktok" target="_blank" class="pill-button w-full px-6 py-4 group">
           <div class="flex-shrink-0 btn-icon w-8">
             <i class="fa-brands fa-tiktok"></i>
           </div>
@@ -587,23 +413,7 @@
         </a>
 
         </div>
-
-        <!-- LEAVE A REVIEW BUTTON -->
-        <button id="review-open-btn" type="button" class="pill-button review-button w-full px-6 py-4 group mt-6 bg-brandPrimary/15 border-brandPrimary/50" aria-haspopup="dialog" aria-controls="review-modal">
-          <div class="flex-shrink-0 btn-icon w-8 text-yellow-400">
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div class="flex-1 flex flex-col justify-center text-center pr-8">
-            <div class="btn-text-primary text-[16px] text-brandWhite drop-shadow-md" data-en="Leave a Review" data-ar="اترك تقييمك">
-              Leave a Review
-            </div>
-            <div class="btn-text-secondary text-brandLight" data-en="Share your DRAGO™ experience." data-ar="شاركنا رأيك وتجربتك مع منتجاتنا.">
-              Share your DRAGO™ experience.
-            </div>
-          </div>
-        </button>
-
-        <!-- POLICIES & TERMS & LANGUAGE BUTTONS -->
+<!-- POLICIES & TERMS & LANGUAGE BUTTONS -->
         <div class="w-full grid grid-cols-3 gap-2 mt-5 px-1">
           <!-- Terms & Conditions Button -->
           <button type="button" onclick="openModal('terms-modal')" class="py-2.5 px-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 backdrop-blur-md text-brandPrimary font-semibold text-[12px] sm:text-[13px] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-1 cursor-pointer shadow-sm text-center">
@@ -638,7 +448,7 @@
   </main>
 
   <!-- TERMS & CONDITIONS MODAL -->
-  <div id="terms-modal" role="dialog" aria-modal="true" aria-hidden="true" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('terms-modal')">
+  <div id="terms-modal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('terms-modal')">
     <div class="bg-[#0D3842] border border-brandPrimary/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[80vh] flex flex-col transform scale-95 transition-all duration-300">
 
       <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
@@ -983,7 +793,6 @@
 
     </div>
 
-
       <div class="mt-5 pt-3 border-t border-white/10 flex justify-end">
         <button type="button" onclick="closeModal('terms-modal')" class="px-5 py-2 bg-brandPrimary text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer" data-en="Close" data-ar="إغلاق">
           Close
@@ -994,7 +803,7 @@
   </div>
 
   <!-- REFUND & RETURN POLICY MODAL -->
-  <div id="refund-modal" role="dialog" aria-modal="true" aria-hidden="true" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('refund-modal')">
+  <div id="refund-modal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('refund-modal')">
     <div class="bg-[#0D3842] border border-brandPrimary/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[80vh] flex flex-col transform scale-95 transition-all duration-300">
 
       <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
@@ -1167,7 +976,6 @@
 
         </div>
 
-
         <!-- =========================
              English Version
              ========================= -->
@@ -1313,76 +1121,6 @@
       </div>
     </div>
 
-  <!-- REVIEW MODAL -->
-  <div id="review-modal" role="dialog" aria-modal="true" aria-hidden="true" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('review-modal')">
-    <div class="bg-[#0D3842] border border-brandPrimary/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[90vh] flex flex-col transform scale-95 transition-all duration-300">
-
-      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
-        <h3 class="text-base font-bold text-brandPrimary flex items-center gap-2">
-          <i class="fa-solid fa-comment-dots"></i>
-          <span data-en="Leave a Review" data-ar="اترك تقييمك">Leave a Review</span>
-        </h3>
-        <button type="button" onclick="closeModal('review-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-      </div>
-
-      <div class="overflow-y-auto pr-1 space-y-4">
-        <div>
-          <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Your Name" data-ar="الاسم">Your Name</label>
-          <input type="text" id="rev-name" class="custom-input" placeholder="e.g. Ahmed Ali" />
-        </div>
-
-        <div>
-          <label class="block text-xs text-brandWhite/80 mb-1 ml-1">
-            <span data-en="Phone Number" data-ar="رقم الهاتف">Phone Number</span>
-            <span class="text-red-400">*</span>
-          </label>
-          <input type="tel" id="rev-phone" class="custom-input border-red-400/30 focus:border-red-400" placeholder="01xxxxxxxxx" required />
-          <p id="phone-error" class="text-red-400 text-[10px] mt-1 hidden" data-en="Phone number is required to submit a review." data-ar="رقم الهاتف مطلوب لإرسال التقييم.">Phone number is required to submit a review.</p>
-        </div>
-
-        <div>
-          <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Order Type / Channel" data-ar="نوع الطلب / المصدر">Order Type / Channel</label>
-          <select id="rev-branch" class="custom-input">
-            <option value="Online / Website" data-en="Online / Website" data-ar="أونلاين / الموقع">Online / Website</option>
-            <option value="WhatsApp" data-en="WhatsApp Order" data-ar="طلب واتساب">WhatsApp Order</option>
-            <option value="Store Visit" data-en="Store Visit" data-ar="زيارة الفرع">Store Visit</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Rating" data-ar="التقييم">Rating</label>
-          <div class="flex gap-3 text-2xl text-yellow-400 justify-center my-3 drop-shadow-md">
-            <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(1)"></i>
-            <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(2)"></i>
-            <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(3)"></i>
-            <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(4)"></i>
-            <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(5)"></i>
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Your Review" data-ar="رأيك">Your Review</label>
-          <textarea id="rev-text" class="custom-input h-24 resize-none" placeholder="..." required></textarea>
-        </div>
-      </div>
-
-      <div id="rev-success" class="hidden mt-4 p-3 bg-brandPrimary/20 border border-brandPrimary/40 rounded-lg text-center">
-        <p class="text-brandPrimary text-sm font-bold" data-en="Thank you! Your review has been submitted." data-ar="شكراً لك! تم إرسال تقييمك بنجاح.">Thank you! Your review has been submitted.</p>
-      </div>
-
-      <div class="mt-5 pt-3 border-t border-white/10 flex justify-end gap-3">
-        <button type="button" onclick="closeModal('review-modal')" class="px-4 py-2 bg-white/10 text-brandWhite text-xs rounded-full hover:bg-white/20 transition-all cursor-pointer" data-en="Cancel" data-ar="إلغاء">Cancel</button>
-        <button id="rev-submit-btn" onclick="submitReview()" class="px-6 py-2 bg-brandPrimary text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer flex items-center gap-2">
-          <i class="fa-solid fa-paper-plane"></i>
-          <span data-en="Submit" data-ar="إرسال">Submit</span>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
   <script>
     window.addEventListener('load', function() {
       // تطبيق إعدادات DRAGO المركزية
@@ -1416,81 +1154,36 @@
 
     function openModal(id) {
       const modal = document.getElementById(id);
-      if (!modal) return false;
-
+      if (!modal) return;
       modal.classList.remove('hidden');
       modal.classList.add('flex');
-      modal.setAttribute('aria-hidden', 'false');
-
-      requestAnimationFrame(() => {
+      setTimeout(() => {
         modal.classList.remove('opacity-0');
         const card = modal.firstElementChild;
         if (card) {
           card.classList.remove('scale-95');
           card.classList.add('scale-100');
         }
-      });
-
-      return false;
+      }, 10);
     }
 
     function closeModal(id) {
       const modal = document.getElementById(id);
-      if (!modal) return false;
-
+      if (!modal) return;
       modal.classList.add('opacity-0');
-      modal.setAttribute('aria-hidden', 'true');
-
       const card = modal.firstElementChild;
       if (card) {
         card.classList.remove('scale-100');
         card.classList.add('scale-95');
       }
-
       setTimeout(() => {
         modal.classList.remove('flex');
         modal.classList.add('hidden');
       }, 300);
-
-      return false;
     }
 
     let currentLang = 'en';
-
-    // Reliable touch/click handlers for modal controls.
-    document.addEventListener('DOMContentLoaded', () => {
-      const reviewBtn = document.getElementById('review-open-btn');
-      if (reviewBtn) {
-        reviewBtn.addEventListener('click', (event) => {
-          event.preventDefault();
-          openModal('review-modal');
-        }, { passive: false });
-      }
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key !== 'Escape') return;
-        document.querySelectorAll('[id$="-modal"]:not(.hidden)').forEach(modal => {
-          closeModal(modal.id);
-        });
-      });
-    });
-    window.currentRating = 5;
-
-    window.setRating = function(val) {
-      window.currentRating = val;
-      const stars = document.querySelectorAll('.star-btn');
-      stars.forEach((star, index) => {
-        if (index < val) {
-          star.classList.remove('fa-regular');
-          star.classList.add('fa-solid');
-        } else {
-          star.classList.remove('fa-solid');
-          star.classList.add('fa-regular');
-        }
-      });
-    };
-
-    function toggleLanguage() {
+function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'ar' : 'en';
 
       document.querySelectorAll('[data-en][data-ar]').forEach(el => {
@@ -1512,167 +1205,7 @@
     }
   </script>
 
-  <script>
-    const GOOGLE_SCRIPT_URL = DRAGO_CONFIG.reviews.googleScriptUrl;
-    let slideInterval = null;
-
-    const mockReviews = [
-      { name: "Ahmed", text: "Great quality and very comfortable!", branch: "Online / Website", rating: 5 },
-      { name: "Sara", text: "Best slides I have ever worn.", branch: "WhatsApp", rating: 5 },
-      { name: "Omar", text: "التوصيل كان سريع والمنتج ممتاز جداً", branch: "Online / Website", rating: 5 }
-    ];
-
-    window.renderSlideshow = function(reviews) {
-      const container = document.getElementById('reviews-slideshow');
-      if (!container) return;
-
-      if (!reviews || reviews.length === 0) {
-        container.innerHTML = `<div class="text-brandWhite/50 text-xs italic" data-en="No reviews yet. Be the first!" data-ar="لا توجد تقييمات بعد. كن الأول!">No reviews yet. Be the first!</div>`;
-        return;
-      }
-
-      container.innerHTML = '';
-
-      reviews.forEach((rev, index) => {
-        const slide = document.createElement('div');
-        slide.className = `absolute inset-0 w-full h-full flex flex-col items-center justify-center transition-opacity duration-1000 ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`;
-
-        const rating = Math.max(1, Math.min(5, Number(rev.rating) || 5));
-        let starsHtml = '';
-        for (let i = 1; i <= 5; i++) {
-          starsHtml += i <= rating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
-        }
-
-        slide.innerHTML = `
-          <div class="flex items-center gap-1 text-yellow-400 text-[10px] mb-1 drop-shadow-md">
-              ${starsHtml}
-          </div>
-          <p class="text-brandWhite text-xs sm:text-sm font-medium line-clamp-2 px-4 italic">"${escapeHtml(rev.text || '')}"</p>
-          <span class="text-brandPrimary text-[9px] sm:text-[10px] mt-1 font-bold">- ${escapeHtml(rev.name || 'Guest')}</span>
-        `;
-
-        container.appendChild(slide);
-      });
-
-      clearInterval(slideInterval);
-      let currentIdx = 0;
-      const slides = container.children;
-
-      if (slides.length > 1) {
-        slideInterval = setInterval(() => {
-          slides[currentIdx].classList.remove('opacity-100', 'z-10');
-          slides[currentIdx].classList.add('opacity-0', 'z-0');
-          currentIdx = (currentIdx + 1) % slides.length;
-          slides[currentIdx].classList.remove('opacity-0', 'z-0');
-          slides[currentIdx].classList.add('opacity-100', 'z-10');
-        }, 4000);
-      }
-    };
-
-    function escapeHtml(value) {
-      return String(value)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-    }
-
-    async function initReviews() {
-      try {
-        const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getReviews`, {
-          method: 'GET',
-          cache: 'no-store'
-        });
-        if (!response.ok) throw new Error(`Status: ${response.status}`);
-        const result = await response.json();
-        if (result.success && Array.isArray(result.reviews)) {
-          renderSlideshow(result.reviews);
-        } else {
-          renderSlideshow(mockReviews);
-        }
-      } catch (error) {
-        renderSlideshow(mockReviews);
-      }
-    }
-
-    initReviews();
-
-    window.submitReview = async () => {
-      const nameInput = document.getElementById('rev-name');
-      const phoneInput = document.getElementById('rev-phone');
-      const branchInput = document.getElementById('rev-branch');
-      const textInput = document.getElementById('rev-text');
-      const errorMsg = document.getElementById('phone-error');
-      const successMsg = document.getElementById('rev-success');
-      const submitBtn = document.getElementById('rev-submit-btn');
-
-      const name = nameInput.value.trim() || (currentLang === 'ar' ? 'عميل' : 'Guest');
-      const phone = phoneInput.value.trim();
-      const branch = branchInput.value;
-      const text = textInput.value.trim();
-      const rating = Number(window.currentRating) || 5;
-
-      if (!phone) {
-        errorMsg.classList.remove('hidden');
-        phoneInput.classList.add('border-red-500');
-        return;
-      }
-
-      if (!text) {
-        textInput.classList.add('border-red-500');
-        return;
-      }
-
-      errorMsg.classList.add('hidden');
-      phoneInput.classList.remove('border-red-500');
-      textInput.classList.remove('border-red-500');
-
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.5';
-
-      try {
-        const body = new URLSearchParams();
-        body.append('action', 'addReview');
-        body.append('name', name);
-        body.append('phone', phone);
-        body.append('branch', branch);
-        body.append('rating', String(rating));
-        body.append('review', text);
-
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          body: body,
-          redirect: 'follow'
-        });
-
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        const result = await response.json();
-        if (!result.success) throw new Error(result.message || 'Error');
-
-        successMsg.classList.remove('hidden');
-        nameInput.value = '';
-        phoneInput.value = '';
-        textInput.value = '';
-        window.setRating(5);
-
-        setTimeout(() => {
-          successMsg.classList.add('hidden');
-          closeModal('review-modal');
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
-        }, 2000);
-
-      } catch (error) {
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = '1';
-        alert(currentLang === 'ar'
-          ? 'حصل خطأ أثناء إرسال التقييم. حاول مرة أخرى.'
-          : 'Something went wrong while sending your review. Please try again.'
-        );
-      }
-    };
-  </script>
+  
 
 </body>
 
