@@ -26,6 +26,37 @@
     rel="stylesheet"
   />
 
+
+    <!-- =========================================================
+         DRAGO — EASY EDIT CONFIG
+         عدّل الروابط والنصوص الأساسية من هنا فقط عند الحاجة.
+         ========================================================= -->
+    <script>
+      const DRAGO_CONFIG = {
+        brand: {
+          name: "DRAGO™",
+          developer: "DEV BY ZEYAD"
+        },
+
+        links: {
+          whatsapp: "https://chat.whatsapp.com/Km3p39MlAzGGpsR5yiPIVY",
+          instagram: "https://www.instagram.com/drago.egy/",
+          facebook: "https://www.facebook.com/drago.eg/",
+          tiktok: "https://www.tiktok.com/@drago.eg?is_from_webapp=1&sender_device=pc"
+        },
+
+        assets: {
+          background: "background.png",
+          splashLogo: "splash-logo.png",
+          headerLogo: "header-logo.png"
+        },
+
+        reviews: {
+          googleScriptUrl: "https://script.google.com/macros/s/AKfycbw0rPln8LtwkUoO0vv6Cr0Y9jjbRk-xgOB90XVqmvFcvrVZZ6Q1yRWqyaGKVvAkKVwSPw/exec"
+        }
+      };
+    </script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -55,7 +86,7 @@
        ================================================== */
     body {
       background-color: #0D3842;
-      background-image:  url('background.png');
+      background-image: url('background.png');
       background-attachment: fixed;
       color: #E7F2F9;
       font-family: 'Inter', sans-serif;
@@ -243,7 +274,7 @@
 </head>
 
 <body
-  class="relative flex flex-col items-center min-h-screen selection:bg-brandGreen selection:text-brandDark"
+  class="relative flex flex-col items-center min-h-screen selection:bg-brandPrimary selection:text-brandDark"
 >
 
 
@@ -265,7 +296,7 @@
     -->
 
     <img
-      src="splash-logo.png"
+      src="${DRAGO_CONFIG.assets.splashLogo}"
       alt=" "
       class="splash-logo"
     />
@@ -300,9 +331,9 @@
         <div class="mb-4 flex justify-center">
 
           <img
-            src="header-logo.png"
+            src="${DRAGO_CONFIG.assets.headerLogo}"
             alt=""
-            class="w-45 h-auto mascot-img drop-shadow-2xl opacity-95"
+            class="w-[180px] sm:w-[200px] h-auto mascot-img drop-shadow-2xl opacity-95"
           />
 
         </div>
@@ -336,8 +367,9 @@
 
       </div>
 
+<div class="social-buttons">
         <!-- 2. WHATSAPP BUTTON -->
-        <a href="https://chat.whatsapp.com/Km3p39MlAzGGpsR5yiPIVY" target="_blank" class="pill-button w-full px-6 py-4 group">
+        <a data-link="whatsapp" target="_blank" class="pill-button w-full px-6 py-4 group">
           <div class="flex-shrink-0 btn-icon w-8">
             <i class="fa-brands fa-whatsapp"></i>
           </div>
@@ -352,7 +384,7 @@
         </a>
 
         <!-- 3. INSTAGRAM BUTTON -->
-        <a href="https://www.instagram.com/drago.egy/" target="_blank" class="pill-button w-full px-6 py-4 group">
+        <a data-link="instagram" target="_blank" class="pill-button w-full px-6 py-4 group">
           <div class="flex-shrink-0 btn-icon w-8">
             <i class="fa-brands fa-instagram"></i>
           </div>
@@ -367,7 +399,7 @@
         </a>
 
         <!-- 4. FACEBOOK BUTTON -->
-        <a href="https://www.facebook.com/drago.eg/" target="_blank" class="pill-button w-full px-6 py-4 group">
+        <a data-link="facebook" target="_blank" class="pill-button w-full px-6 py-4 group">
           <div class="flex-shrink-0 btn-icon w-8">
             <i class="fa-brands fa-facebook"></i>
           </div>
@@ -382,7 +414,7 @@
         </a>
 
         <!-- 5. TIKTOK BUTTON -->
-        <a href="https://www.tiktok.com/@drago.eg?is_from_webapp=1&sender_device=pc" target="_blank" class="pill-button w-full px-6 py-4 group">
+        <a data-link="tiktok" target="_blank" class="pill-button w-full px-6 py-4 group">
           <div class="flex-shrink-0 btn-icon w-8">
             <i class="fa-brands fa-tiktok"></i>
           </div>
@@ -396,8 +428,10 @@
           </div>
         </a>
 
+        </div>
+
         <!-- LEAVE A REVIEW BUTTON -->
-        <button onclick="openModal('review-modal')" class="pill-button w-full px-6 py-4 group mt-6 bg-brandPrimary/15 border-brandPrimary/50">
+        <button type="button" onclick="openModal('review-modal')" class="pill-button w-full px-6 py-4 group mt-6 bg-brandPrimary/15 border-brandPrimary/50">
           <div class="flex-shrink-0 btn-icon w-8 text-yellow-400">
             <i class="fa-solid fa-star"></i>
           </div>
@@ -454,7 +488,7 @@
           <i class="fa-solid fa-file-contract"></i>
           <span data-en="Terms & Conditions" data-ar="الشروط والأحكام">Terms & Conditions</span>
         </h3>
-        <button onclick="closeModal('terms-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
+        <button type="button" onclick="closeModal('terms-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
@@ -793,7 +827,7 @@
 
 
       <div class="mt-5 pt-3 border-t border-white/10 flex justify-end">
-        <button onclick="closeModal('terms-modal')" class="px-5 py-2 bg-brandPrimary text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer" data-en="Close" data-ar="إغلاق">
+        <button type="button" onclick="closeModal('terms-modal')" class="px-5 py-2 bg-brandPrimary text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer" data-en="Close" data-ar="إغلاق">
           Close
         </button>
       </div>
@@ -1130,7 +1164,7 @@
           <i class="fa-solid fa-comment-dots"></i>
           <span data-en="Leave a Review" data-ar="اترك تقييمك">Leave a Review</span>
         </h3>
-        <button onclick="closeModal('review-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
+        <button type="button" onclick="closeModal('review-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
@@ -1180,8 +1214,8 @@
         <p class="text-brandPrimary text-sm font-bold" data-en="Thank you! Your review has been submitted." data-ar="شكراً لك! تم إرسال تقييمك بنجاح.">Thank you! Your review has been submitted.</p>
       </div>
 
-      <div class="mt-5 pt-3 border-t border-white/10 flex justify-end gap-2">
-        <button onclick="closeModal('review-modal')" class="px-4 py-2 bg-white/10 text-brandWhite text-xs rounded-full hover:bg-white/20 transition-all cursor-pointer" data-en="Cancel" data-ar="إلغاء">Cancel</button>
+      <div class="mt-5 pt-3 border-t border-white/10 flex justify-end gap-3">
+        <button type="button" onclick="closeModal('review-modal')" class="px-4 py-2 bg-white/10 text-brandWhite text-xs rounded-full hover:bg-white/20 transition-all cursor-pointer" data-en="Cancel" data-ar="إلغاء">Cancel</button>
         <button id="rev-submit-btn" onclick="submitReview()" class="px-6 py-2 bg-brandPrimary text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer flex items-center gap-2">
           <i class="fa-solid fa-paper-plane"></i>
           <span data-en="Submit" data-ar="إرسال">Submit</span>
@@ -1193,6 +1227,28 @@
 
   <script>
     window.addEventListener('load', function() {
+      // تطبيق إعدادات DRAGO المركزية
+      document.body.style.backgroundImage = `url("${DRAGO_CONFIG.assets.background}")`;
+
+      const brandName = document.getElementById('brand-name');
+      if (brandName) brandName.textContent = DRAGO_CONFIG.brand.name;
+
+      const developer = document.querySelector('footer span');
+      if (developer) developer.textContent = DRAGO_CONFIG.brand.developer;
+
+      const splashLogo = document.querySelector('#splash-screen .splash-logo');
+      if (splashLogo) splashLogo.src = DRAGO_CONFIG.assets.splashLogo;
+
+      const headerLogo = document.querySelector('.mascot-img');
+      if (headerLogo) headerLogo.src = DRAGO_CONFIG.assets.headerLogo;
+
+      document.querySelectorAll('[data-link]').forEach(link => {
+        const key = link.getAttribute('data-link');
+        if (DRAGO_CONFIG.links[key]) {
+          link.href = DRAGO_CONFIG.links[key];
+        }
+      });
+
       const splash = document.getElementById('splash-screen');
       setTimeout(() => {
         splash.style.opacity = '0';
@@ -1207,7 +1263,7 @@
       modal.classList.add('flex');
       setTimeout(() => {
         modal.classList.remove('opacity-0');
-        const card = modal.querySelector('div');
+        const card = modal.firstElementChild;
         if (card) {
           card.classList.remove('scale-95');
           card.classList.add('scale-100');
@@ -1219,7 +1275,7 @@
       const modal = document.getElementById(id);
       if (!modal) return;
       modal.classList.add('opacity-0');
-      const card = modal.querySelector('div');
+      const card = modal.firstElementChild;
       if (card) {
         card.classList.remove('scale-100');
         card.classList.add('scale-95');
@@ -1270,7 +1326,7 @@
   </script>
 
   <script type="module">
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxB_lvZC8vl1WyK5T4eK9UCG2dT53hK0fKEZc2525spAOlu0xTofsOj5dljzeesHIma3Q/exec";
+    const GOOGLE_SCRIPT_URL = DRAGO_CONFIG.reviews.googleScriptUrl;
     let slideInterval = null;
 
     const mockReviews = [
