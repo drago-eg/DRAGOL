@@ -26,6 +26,37 @@
     rel="stylesheet"
   />
 
+
+    <!-- =========================================================
+         DRAGO — EASY EDIT CONFIG
+         عدّل الروابط والنصوص الأساسية من هنا فقط عند الحاجة.
+         ========================================================= -->
+    <script>
+      const DRAGO_CONFIG = {
+        brand: {
+          name: "DRAGO™",
+          developer: "DEV BY ZEYAD"
+        },
+
+        links: {
+          whatsapp: "https://chat.whatsapp.com/Km3p39MlAzGGpsR5yiPIVY",
+          instagram: "https://www.instagram.com/drago.egy/",
+          facebook: "https://www.facebook.com/drago.eg/",
+          tiktok: "https://www.tiktok.com/@drago.eg?is_from_webapp=1&sender_device=pc"
+        },
+
+        assets: {
+          background: "background.png",
+          splashLogo: "splash-logo.png",
+          headerLogo: "header-logo.png"
+        },
+
+        reviews: {
+          googleScriptUrl: "https://script.google.com/macros/s/AKfycbw0rPln8LtwkUoO0vv6Cr0Y9jjbRk-xgOB90XVqmvFcvrVZZ6Q1yRWqyaGKVvAkKVwSPw/exec"
+        }
+      };
+    </script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -55,7 +86,7 @@
        ================================================== */
     body {
       background-color: #0D3842;
-      background-image:  url('background.png');
+      background-image: url('background.png');
       background-attachment: fixed;
       color: #E7F2F9;
       font-family: 'Inter', sans-serif;
@@ -124,64 +155,9 @@
       }
     }
 
-
     /* ==================================================
        BUTTON STYLING
        ================================================== */
-
-    /* المسافة بين كل زر والآخر من مكان واحد فقط */
-    .social-buttons {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .social-button {
-      min-height: 72px;
-      margin: 0 !important;
-      text-decoration: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .review-button {
-      margin-top: 0 !important;
-      background: rgba(49, 165, 237, 0.15);
-      border-color: rgba(49, 165, 237, 0.5);
-    }
-
-    /* تحسين الأداء على الأجهزة الضعيفة */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .social-buttons {
-        gap: 12px;
-      }
-
-      .social-button {
-        min-height: 68px;
-      }
-
-      .pill-button {
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-      }
-
-      .bg-blur-overlay {
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-      }
-    }
-
     .pill-button {
       background: rgba(231, 242, 249, 0.07);
       backdrop-filter: blur(14px);
@@ -293,33 +269,167 @@
       background: #0D3842;
       color: #E7F2F9;
     }
+
+    /* ==================================================
+       MOBILE / SMALL-SCREEN OPTIMIZATION
+       ================================================== */
+    .social-buttons {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .social-buttons .pill-button {
+      margin: 0 !important;
+      min-height: 68px;
+      width: 100%;
+    }
+
+    .review-button {
+      margin-top: 14px !important;
+      min-height: 68px;
+    }
+
+    /* Prevent long labels from breaking the layout on narrow phones. */
+    .btn-text-primary,
+    .btn-text-secondary {
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    @media (max-width: 420px) {
+      .main, main {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+      }
+
+      .social-buttons {
+        gap: 10px;
+      }
+
+      .social-buttons .pill-button,
+      .review-button {
+        min-height: 64px;
+        padding: 11px 14px !important;
+        border-radius: 22px;
+      }
+
+      .btn-icon {
+        width: 30px !important;
+        min-width: 30px;
+        font-size: 1.55rem;
+      }
+
+      .btn-text-primary {
+        font-size: 14px !important;
+      }
+
+      .btn-text-secondary {
+        font-size: 11px;
+        line-height: 1.25;
+      }
+
+      .pill-button .pr-8 {
+        padding-right: 6px !important;
+      }
+
+      #review-modal,
+      #terms-modal,
+      #refund-modal {
+        padding: 10px !important;
+      }
+
+      #review-modal > div,
+      #terms-modal > div,
+      #refund-modal > div {
+        width: 100%;
+        max-width: 100%;
+        max-height: 92vh;
+        padding: 18px !important;
+        border-radius: 18px;
+      }
+
+      #review-modal .custom-input {
+        min-height: 46px;
+      }
+
+      #review-modal textarea.custom-input {
+        min-height: 92px;
+      }
+
+      #review-modal .flex.justify-end {
+        gap: 8px;
+      }
+
+      #review-modal .flex.justify-end button {
+        min-height: 44px;
+      }
+
+      .grid.grid-cols-3 {
+        gap: 6px !important;
+      }
+
+      .grid.grid-cols-3 button {
+        min-height: 42px;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+      }
+    }
+
+    @media (max-width: 360px) {
+      main {
+        padding-top: 26px !important;
+        padding-bottom: 26px !important;
+      }
+
+      .social-buttons .pill-button,
+      .review-button {
+        min-height: 60px;
+        padding-top: 9px !important;
+        padding-bottom: 9px !important;
+      }
+
+      .btn-text-primary {
+        font-size: 13px !important;
+      }
+
+      .btn-text-secondary {
+        font-size: 10px;
+      }
+    }
+
+    /* Backdrop blur is expensive on some mobile GPUs. Keep the look, reduce cost. */
+    @media (max-width: 640px) {
+      .bg-blur-overlay {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+      }
+
+      .pill-button,
+      #reviews-slideshow,
+      #review-modal > div,
+      #terms-modal > div,
+      #refund-modal > div {
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mascot-img,
+      .animated-title,
+      .splash-logo {
+        animation: none !important;
+      }
+
+      .pill-button {
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+      }
+    }
   </style>
 
 </head>
-
-
-  <!-- =========================================================
-       DRAGO — EASY EDIT
-       عدّل الحقوق والروابط والملفات من هنا فقط.
-       ========================================================= -->
-  <script>
-    const DRAGO_CONFIG = {
-      brandName: "DRAGO™",
-      developer: "<span id="developer-rights">DEV BY ZEYAD</span>",
-      copyright: "DRAGO™ — All Rights Reserved.",
-      social: {
-        whatsapp: "https://chat.whatsapp.com/Km3p39MlAzGGpsR5yiPIVY",
-        instagram: "https://www.instagram.com/drago.egy/",
-        facebook: "https://www.facebook.com/drago.eg/",
-        tiktok: "https://www.tiktok.com/@drago.eg"
-      },
-      assets: {
-        background: "background.png",
-        splashLogo: "splash-logo.png",
-        headerLogo: "header-logo.png"
-      }
-    };
-  </script>
 
 <body
   class="relative flex flex-col items-center min-h-screen selection:bg-brandPrimary selection:text-brandDark"
@@ -355,7 +465,7 @@
     -->
 
     <span
-      class="text-brandPrimary text-sm font-semibold tracking-widest mt-4 uppercase animate-pulse"
+      class="text-brandGreen text-sm font-semibold tracking-widest mt-4 uppercase animate-pulse"
     >
       
     </span>
@@ -414,105 +524,87 @@
         </div>
 
       </div>
-        <!-- ==================================================
-             SOCIAL ACTIONS
-             المسافة بين الزراير موحدة من مكان واحد فقط.
-             ================================================== -->
-        <div class="social-buttons" aria-label="DRAGO social links">
 
-          <!-- WhatsApp -->
-          <a href="https://chat.whatsapp.com/Km3p39MlAzGGpsR5yiPIVY"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="pill-button social-button w-full px-6 py-4 group">
-            <div class="flex-shrink-0 btn-icon w-8">
-              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+<div class="social-buttons">
+        <!-- 2. WHATSAPP BUTTON -->
+        <a data-link="whatsapp" target="_blank" rel="noopener noreferrer" class="pill-button w-full px-6 py-4 group">
+          <div class="flex-shrink-0 btn-icon w-8">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px]" data-en="New Arrivals WhatsApp Group" data-ar="جروب الواتساب للتشكيلات الجديدة">
+              New Arrivals WhatsApp Group
             </div>
-            <div class="flex-1 flex flex-col justify-center text-center pr-8">
-              <div class="btn-text-primary text-[16px]" data-en="New Arrivals WhatsApp Group" data-ar="جروب الواتساب للتشكيلات الجديدة">
-                New Arrivals WhatsApp Group
-              </div>
-              <div class="btn-text-secondary" data-en="Get first access to our newest arrivals." data-ar="كن أول من يعلم بأحدث المنتجات والوصلات الجديدة.">
-                Get first access to our newest arrivals.
-              </div>
+            <div class="btn-text-secondary" data-en="Get first access to our newest arrivals." data-ar="كن أول من يعلم بأحدث المنتجات والوصلات الجديدة.">
+              Get first access to our newest arrivals.
             </div>
-          </a>
+          </div>
+        </a>
 
-          <!-- Instagram -->
-          <a href="https://www.instagram.com/drago.egy/"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="pill-button social-button w-full px-6 py-4 group">
-            <div class="flex-shrink-0 btn-icon w-8">
-              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        <!-- 3. INSTAGRAM BUTTON -->
+        <a data-link="instagram" target="_blank" rel="noopener noreferrer" class="pill-button w-full px-6 py-4 group">
+          <div class="flex-shrink-0 btn-icon w-8">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px]" data-en="Follow Us on Instagram" data-ar="تابعنا على إنستغرام">
+              Follow Us on Instagram
             </div>
-            <div class="flex-1 flex flex-col justify-center text-center pr-8">
-              <div class="btn-text-primary text-[16px]" data-en="Follow Us on Instagram" data-ar="تابعنا على إنستغرام">
-                Follow Us on Instagram
-              </div>
-              <div class="btn-text-secondary" data-en="Your daily dose of DRAGO™. Follow along." data-ar="جرعتك اليومية من DRAGO™. تابعنا هناك.">
-                Your daily dose of DRAGO™. Follow along.
-              </div>
+            <div class="btn-text-secondary" data-en="Your daily dose of DRAGO™. Follow along." data-ar="جرعتك اليومية من DRAGO™. تابعنا هناك.">
+              Your daily dose of DRAGO™. Follow along.
             </div>
-          </a>
+          </div>
+        </a>
 
-          <!-- Facebook -->
-          <a href="https://www.facebook.com/drago.eg/"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="pill-button social-button w-full px-6 py-4 group">
-            <div class="flex-shrink-0 btn-icon w-8">
-              <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+        <!-- 4. FACEBOOK BUTTON -->
+        <a data-link="facebook" target="_blank" rel="noopener noreferrer" class="pill-button w-full px-6 py-4 group">
+          <div class="flex-shrink-0 btn-icon w-8">
+            <i class="fa-brands fa-facebook"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px]" data-en="Follow Us on Facebook" data-ar="تابعنا على فيسبوك">
+              Follow Us on Facebook
             </div>
-            <div class="flex-1 flex flex-col justify-center text-center pr-8">
-              <div class="btn-text-primary text-[16px]" data-en="Follow Us on Facebook" data-ar="تابعنا على فيسبوك">
-                Follow Us on Facebook
-              </div>
-              <div class="btn-text-secondary" data-en="Stay connected with DRAGO™." data-ar="خليك دايماً على تواصل معنا.">
-                Stay connected with DRAGO™.
-              </div>
+            <div class="btn-text-secondary" data-en="Stay connected with DRAGO™." data-ar="خليك دايماً على تواصل معنا.">
+              Stay connected with DRAGO™.
             </div>
-          </a>
+          </div>
+        </a>
 
-          <!-- TikTok -->
-          <a href="https://www.tiktok.com/@drago.eg?is_from_webapp=1&sender_device=pc"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="pill-button social-button w-full px-6 py-4 group">
-            <div class="flex-shrink-0 btn-icon w-8">
-              <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+        <!-- 5. TIKTOK BUTTON -->
+        <a data-link="tiktok" target="_blank" rel="noopener noreferrer" class="pill-button w-full px-6 py-4 group">
+          <div class="flex-shrink-0 btn-icon w-8">
+            <i class="fa-brands fa-tiktok"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px]" data-en="Follow Us on TikTok" data-ar="تابعنا على تيك توك">
+              Follow Us on TikTok
             </div>
-            <div class="flex-1 flex flex-col justify-center text-center pr-8">
-              <div class="btn-text-primary text-[16px]" data-en="Follow Us on TikTok" data-ar="تابعنا على تيك توك">
-                Follow Us on TikTok
-              </div>
-              <div class="btn-text-secondary" data-en="Discover DRAGO™, trends & new drops." data-ar="استكشف الفيديوهات والصيحات الجديدة.">
-                Discover DRAGO™, trends & new drops.
-              </div>
+            <div class="btn-text-secondary" data-en="Discover DRAGO™, trends & new drops." data-ar="استكشف الفيديوهات والصيحات الجديدة.">
+              Discover DRAGO™, trends & new drops.
             </div>
-          </a>
-
-          <!-- Review -->
-          <button type="button"
-                  onclick="openModal('review-modal')"
-                  class="pill-button social-button w-full px-6 py-4 group review-button">
-            <div class="flex-shrink-0 btn-icon w-8 text-yellow-400">
-              <i class="fa-solid fa-star" aria-hidden="true"></i>
-            </div>
-            <div class="flex-1 flex flex-col justify-center text-center pr-8">
-              <div class="btn-text-primary text-[16px] text-brandWhite drop-shadow-md" data-en="Leave a Review" data-ar="اترك تقييمك">
-                Leave a Review
-              </div>
-              <div class="btn-text-secondary text-brandLight" data-en="Share your DRAGO™ experience." data-ar="شاركنا رأيك وتجربتك مع منتجاتنا.">
-                Share your DRAGO™ experience.
-              </div>
-            </div>
-          </button>
+          </div>
+        </a>
 
         </div>
 
+        <!-- LEAVE A REVIEW BUTTON -->
+        <button id="review-open-btn" type="button" class="pill-button review-button w-full px-6 py-4 group mt-6 bg-brandPrimary/15 border-brandPrimary/50" aria-haspopup="dialog" aria-controls="review-modal">
+          <div class="flex-shrink-0 btn-icon w-8 text-yellow-400">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div class="flex-1 flex flex-col justify-center text-center pr-8">
+            <div class="btn-text-primary text-[16px] text-brandWhite drop-shadow-md" data-en="Leave a Review" data-ar="اترك تقييمك">
+              Leave a Review
+            </div>
+            <div class="btn-text-secondary text-brandLight" data-en="Share your DRAGO™ experience." data-ar="شاركنا رأيك وتجربتك مع منتجاتنا.">
+              Share your DRAGO™ experience.
+            </div>
+          </div>
+        </button>
+
         <!-- POLICIES & TERMS & LANGUAGE BUTTONS -->
-        <div class="w-full grid grid-cols-3 gap-2 mt-4 px-1">
+        <div class="w-full grid grid-cols-3 gap-2 mt-5 px-1">
           <!-- Terms & Conditions Button -->
           <button type="button" onclick="openModal('terms-modal')" class="py-2.5 px-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 backdrop-blur-md text-brandPrimary font-semibold text-[12px] sm:text-[13px] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-1 cursor-pointer shadow-sm text-center">
             <i class="fa-solid fa-file-contract text-xs"></i>
@@ -546,7 +638,7 @@
   </main>
 
   <!-- TERMS & CONDITIONS MODAL -->
-  <div id="terms-modal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('terms-modal')">
+  <div id="terms-modal" role="dialog" aria-modal="true" aria-hidden="true" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('terms-modal')">
     <div class="bg-[#0D3842] border border-brandPrimary/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[80vh] flex flex-col transform scale-95 transition-all duration-300">
 
       <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
@@ -554,7 +646,7 @@
           <i class="fa-solid fa-file-contract"></i>
           <span data-en="Terms & Conditions" data-ar="الشروط والأحكام">Terms & Conditions</span>
         </h3>
-        <button onclick="closeModal('terms-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
+        <button type="button" onclick="closeModal('terms-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
@@ -562,12 +654,12 @@
       <div class="overflow-y-auto text-sm text-brandWhite/90 pr-1 leading-relaxed">
         <!-- English Terms -->
         <div class="english-policy space-y-5">
-                    <h4 class="font-bold text-brandPrimary mb-2">
+                    <h4 class="font-bold text-brandGreen mb-2">
             Introduction
           </h4>
 
           <p class="text-xs text-brandWhite/80">
-            Welcome to <strong class="text-brandPrimary">DRAGO™</strong>,
+            Welcome to <strong class="text-brandGreen">DRAGO™</strong>,
             your store for slippers and footwear products. By accessing our
             website and using our services, you agree to comply with the
             following terms and conditions. Please read these terms carefully
@@ -577,7 +669,7 @@
 
         <!-- Definitions -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             Definitions
           </h4>
 
@@ -601,7 +693,7 @@
 
         <!-- Website Usage -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             Website Usage
           </h4>
 
@@ -624,7 +716,7 @@
 
         <!-- Orders & Payment -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             Orders & Payment
           </h4>
 
@@ -648,7 +740,7 @@
 
         <!-- Shipping & Delivery -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             Shipping & Delivery
           </h4>
 
@@ -672,7 +764,7 @@
 
         <!-- Intellectual Property -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             Intellectual Property
           </h4>
 
@@ -691,7 +783,7 @@
 
         <!-- Limitation of Liability -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             Limitation of Liability
           </h4>
 
@@ -711,7 +803,7 @@
 
         <!-- Amendments -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             Amendments
           </h4>
 
@@ -729,13 +821,13 @@
           <section>
   <!-- المقدمة -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             المقدمة
           </h4>
 
           <p class="text-xs text-brandWhite/80">
             مرحبًا بكم في متجر
-            <strong class="text-brandPrimary">DRAGO™</strong>
+            <strong class="text-brandGreen">DRAGO™</strong>
             لمنتجات السليبر والأحذية. من خلال الدخول إلى موقعنا واستخدام
             خدماتنا، فإنك توافق على الالتزام بالشروط والأحكام الواردة أدناه.
             يرجى قراءة هذه الشروط بعناية قبل استخدام الموقع أو إتمام أي
@@ -745,7 +837,7 @@
 
         <!-- التعاريف -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             التعاريف
           </h4>
 
@@ -769,7 +861,7 @@
 
         <!-- استخدام الموقع -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             استخدام الموقع
           </h4>
 
@@ -793,7 +885,7 @@
 
         <!-- الطلبات والدفع -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             الطلبات والدفع
           </h4>
 
@@ -816,7 +908,7 @@
 
         <!-- الشحن والتوصيل -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             الشحن والتوصيل
           </h4>
 
@@ -839,7 +931,7 @@
 
         <!-- الملكية الفكرية -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             الملكية الفكرية
           </h4>
 
@@ -858,7 +950,7 @@
 
         <!-- حدود المسؤولية -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             حدود المسؤولية
           </h4>
 
@@ -877,7 +969,7 @@
 
         <!-- التعديلات -->
         <section>
-          <h4 class="font-bold text-brandPrimary mb-2">
+          <h4 class="font-bold text-brandGreen mb-2">
             التعديلات
           </h4>
 
@@ -893,7 +985,7 @@
 
 
       <div class="mt-5 pt-3 border-t border-white/10 flex justify-end">
-        <button onclick="closeModal('terms-modal')" class="px-5 py-2 bg-brandPrimary text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer" data-en="Close" data-ar="إغلاق">
+        <button type="button" onclick="closeModal('terms-modal')" class="px-5 py-2 bg-brandPrimary text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer" data-en="Close" data-ar="إغلاق">
           Close
         </button>
       </div>
@@ -902,7 +994,7 @@
   </div>
 
   <!-- REFUND & RETURN POLICY MODAL -->
-  <div id="refund-modal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('refund-modal')">
+  <div id="refund-modal" role="dialog" aria-modal="true" aria-hidden="true" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('refund-modal')">
     <div class="bg-[#0D3842] border border-brandPrimary/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[80vh] flex flex-col transform scale-95 transition-all duration-300">
 
       <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
@@ -948,7 +1040,7 @@
 
           <!-- Intro -->
           <p class="text-xs text-brandWhite/80">
-            نسعى في <strong class="text-brandPrimary">DRAGO™</strong>
+            نسعى في <strong class="text-brandGreen">DRAGO™</strong>
             إلى تقديم تجربة تسوق مميزة ومنتجات عالية الجودة. ومع ذلك، قد تطرأ
             بعض الظروف التي تستدعي الاستبدال أو الاسترجاع، ولذلك وضعنا السياسة
             التالية لضمان حقوق عملائنا وتقديم أفضل خدمة ممكنة.
@@ -956,7 +1048,7 @@
 
           <!-- General Conditions -->
           <section>
-            <h4 class="font-bold text-brandPrimary mb-2">
+            <h4 class="font-bold text-brandGreen mb-2">
               الشروط العامة
             </h4>
 
@@ -983,7 +1075,7 @@
 
           <!-- Non-Returnable Products -->
           <section>
-            <h4 class="font-bold text-brandPrimary mb-2">
+            <h4 class="font-bold text-brandGreen mb-2">
               المنتجات غير القابلة للاسترجاع
             </h4>
 
@@ -1006,7 +1098,7 @@
 
           <!-- Return Process -->
           <section>
-            <h4 class="font-bold text-brandPrimary mb-2">
+            <h4 class="font-bold text-brandGreen mb-2">
               آلية الاسترجاع
             </h4>
 
@@ -1032,7 +1124,7 @@
 
           <!-- Refunds -->
           <section>
-            <h4 class="font-bold text-brandPrimary mb-2">
+            <h4 class="font-bold text-brandGreen mb-2">
               الاسترداد المالي
             </h4>
 
@@ -1054,7 +1146,7 @@
 
           <!-- Exchanges -->
           <section>
-            <h4 class="font-bold text-brandPrimary mb-2">
+            <h4 class="font-bold text-brandGreen mb-2">
               الاستبدال
             </h4>
 
@@ -1087,7 +1179,7 @@
 
           <!-- Intro -->
           <p class="text-xs text-brandWhite/80">
-            At <strong class="text-brandPrimary">DRAGO™</strong>,
+            At <strong class="text-brandGreen">DRAGO™</strong>,
             we strive to provide an exceptional shopping experience and
             high-quality products. However, there may be circumstances where
             a return or exchange is required. To ensure a smooth experience
@@ -1097,7 +1189,7 @@
 
           <!-- General Conditions -->
           <section>
-            <h4 class="font-bold text-brandPrimary mb-2">
+            <h4 class="font-bold text-brandGreen mb-2">
               General Conditions
             </h4>
 
@@ -1124,7 +1216,7 @@
 
           <!-- Non-Returnable Products -->
           <section>
-            <h4 class="font-bold text-brandPrimary mb-2">
+            <h4 class="font-bold text-brandGreen mb-2">
               Non-Returnable Products
             </h4>
 
@@ -1147,7 +1239,7 @@
 
           <!-- Return Process -->
           <section>
-            <h4 class="font-bold text-brandPrimary mb-2">
+            <h4 class="font-bold text-brandGreen mb-2">
               Return Process
             </h4>
 
@@ -1174,7 +1266,7 @@
 
           <!-- Refunds -->
           <section>
-            <h4 class="font-bold text-brandPrimary mb-2">
+            <h4 class="font-bold text-brandGreen mb-2">
               Refunds
             </h4>
 
@@ -1196,7 +1288,7 @@
 
           <!-- Exchanges -->
           <section>
-            <h4 class="font-bold text-brandPrimary mb-2">
+            <h4 class="font-bold text-brandGreen mb-2">
               Exchanges
             </h4>
 
@@ -1222,7 +1314,7 @@
     </div>
 
   <!-- REVIEW MODAL -->
-  <div id="review-modal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('review-modal')">
+  <div id="review-modal" role="dialog" aria-modal="true" aria-hidden="true" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[10000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="if(event.target === this) closeModal('review-modal')">
     <div class="bg-[#0D3842] border border-brandPrimary/40 rounded-2xl max-w-md w-full p-6 text-brandWhite shadow-2xl relative max-h-[90vh] flex flex-col transform scale-95 transition-all duration-300">
 
       <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
@@ -1230,7 +1322,7 @@
           <i class="fa-solid fa-comment-dots"></i>
           <span data-en="Leave a Review" data-ar="اترك تقييمك">Leave a Review</span>
         </h3>
-        <button onclick="closeModal('review-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
+        <button type="button" onclick="closeModal('review-modal')" class="text-brandWhite/70 hover:text-brandWhite p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
@@ -1261,7 +1353,7 @@
 
         <div>
           <label class="block text-xs text-brandWhite/80 mb-1 ml-1" data-en="Rating" data-ar="التقييم">Rating</label>
-          <div class="flex gap-2.5 sm:gap-3 text-2xl text-yellow-400 justify-center my-3 drop-shadow-md">
+          <div class="flex gap-3 text-2xl text-yellow-400 justify-center my-3 drop-shadow-md">
             <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(1)"></i>
             <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(2)"></i>
             <i class="fa-solid fa-star star-btn transition-transform hover:scale-125 cursor-pointer" onclick="window.setRating(3)"></i>
@@ -1280,8 +1372,8 @@
         <p class="text-brandPrimary text-sm font-bold" data-en="Thank you! Your review has been submitted." data-ar="شكراً لك! تم إرسال تقييمك بنجاح.">Thank you! Your review has been submitted.</p>
       </div>
 
-      <div class="mt-5 pt-3 border-t border-white/10 flex justify-end gap-2">
-        <button onclick="closeModal('review-modal')" class="px-4 py-2 bg-white/10 text-brandWhite text-xs rounded-full hover:bg-white/20 transition-all cursor-pointer" data-en="Cancel" data-ar="إلغاء">Cancel</button>
+      <div class="mt-5 pt-3 border-t border-white/10 flex justify-end gap-3">
+        <button type="button" onclick="closeModal('review-modal')" class="px-4 py-2 bg-white/10 text-brandWhite text-xs rounded-full hover:bg-white/20 transition-all cursor-pointer" data-en="Cancel" data-ar="إلغاء">Cancel</button>
         <button id="rev-submit-btn" onclick="submitReview()" class="px-6 py-2 bg-brandPrimary text-brandDark font-bold text-xs rounded-full hover:brightness-110 transition-all cursor-pointer flex items-center gap-2">
           <i class="fa-solid fa-paper-plane"></i>
           <span data-en="Submit" data-ar="إرسال">Submit</span>
@@ -1293,28 +1385,26 @@
 
   <script>
     window.addEventListener('load', function() {
-      // Apply centralized DRAGO settings
-      document.title = DRAGO_CONFIG.brandName;
+      // تطبيق إعدادات DRAGO المركزية
+      document.body.style.backgroundImage = `url("${DRAGO_CONFIG.assets.background}")`;
 
-      const developer = document.getElementById('developer-rights');
-      if (developer) developer.textContent = DRAGO_CONFIG.developer;
+      const brandName = document.getElementById('brand-name');
+      if (brandName) brandName.textContent = DRAGO_CONFIG.brand.name;
 
-      const splashLogo = document.querySelector('#splash-screen img');
+      const developer = document.querySelector('footer span');
+      if (developer) developer.textContent = DRAGO_CONFIG.brand.developer;
+
+      const splashLogo = document.querySelector('#splash-screen .splash-logo');
       if (splashLogo) splashLogo.src = DRAGO_CONFIG.assets.splashLogo;
 
       const headerLogo = document.querySelector('.mascot-img');
       if (headerLogo) headerLogo.src = DRAGO_CONFIG.assets.headerLogo;
 
-      const socialMap = {
-        'https://chat.whatsapp.com/Km3p39MlAzGGpsR5yiPIVY': DRAGO_CONFIG.social.whatsapp,
-        'https://www.instagram.com/drago.egy/': DRAGO_CONFIG.social.instagram,
-        'https://www.facebook.com/drago.eg/': DRAGO_CONFIG.social.facebook,
-        'https://www.tiktok.com/@drago.eg?is_from_webapp=1&sender_device=pc': DRAGO_CONFIG.social.tiktok
-      };
-
-      document.querySelectorAll('.social-button[href]').forEach(link => {
-        const current = link.getAttribute('href');
-        if (socialMap[current]) link.href = socialMap[current];
+      document.querySelectorAll('[data-link]').forEach(link => {
+        const key = link.getAttribute('data-link');
+        if (DRAGO_CONFIG.links[key]) {
+          link.href = DRAGO_CONFIG.links[key];
+        }
       });
 
       const splash = document.getElementById('splash-screen');
@@ -1326,42 +1416,64 @@
 
     function openModal(id) {
       const modal = document.getElementById(id);
-      if (!modal) return;
+      if (!modal) return false;
+
       modal.classList.remove('hidden');
       modal.classList.add('flex');
-      setTimeout(() => {
+      modal.setAttribute('aria-hidden', 'false');
+
+      requestAnimationFrame(() => {
         modal.classList.remove('opacity-0');
         const card = modal.firstElementChild;
         if (card) {
           card.classList.remove('scale-95');
           card.classList.add('scale-100');
         }
-      }, 10);
+      });
+
+      return false;
     }
 
     function closeModal(id) {
       const modal = document.getElementById(id);
-      if (!modal) return;
+      if (!modal) return false;
+
       modal.classList.add('opacity-0');
+      modal.setAttribute('aria-hidden', 'true');
+
       const card = modal.firstElementChild;
       if (card) {
         card.classList.remove('scale-100');
         card.classList.add('scale-95');
       }
+
       setTimeout(() => {
         modal.classList.remove('flex');
         modal.classList.add('hidden');
       }, 300);
+
+      return false;
     }
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape') return;
-      document.querySelectorAll('[id$="-modal"]:not(.hidden)').forEach(modal => {
-        closeModal(modal.id);
+    let currentLang = 'en';
+
+    // Reliable touch/click handlers for modal controls.
+    document.addEventListener('DOMContentLoaded', () => {
+      const reviewBtn = document.getElementById('review-open-btn');
+      if (reviewBtn) {
+        reviewBtn.addEventListener('click', (event) => {
+          event.preventDefault();
+          openModal('review-modal');
+        }, { passive: false });
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        document.querySelectorAll('[id$="-modal"]:not(.hidden)').forEach(modal => {
+          closeModal(modal.id);
+        });
       });
     });
-
-    let currentLang = 'en';
     window.currentRating = 5;
 
     window.setRating = function(val) {
@@ -1401,7 +1513,7 @@
   </script>
 
   <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxB_lvZC8vl1WyK5T4eK9UCG2dT53hK0fKEZc2525spAOlu0xTofsOj5dljzeesHIma3Q/exec";
+    const GOOGLE_SCRIPT_URL = DRAGO_CONFIG.reviews.googleScriptUrl;
     let slideInterval = null;
 
     const mockReviews = [
